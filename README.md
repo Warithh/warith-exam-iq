@@ -2,6 +2,8 @@
 
 موقع ثابت (HTML/CSS/JS) للدراسة والامتحان التجريبي بدون تسجيل دخول. تُحفظ الإحصاءات محليًا في المتصفح.
 
+**المستودع على GitHub:** [https://github.com/Warithh/warith-exam-iq](https://github.com/Warithh/warith-exam-iq)
+
 ## التشغيل محليًا
 
 افتح `index.html` في المتصفح، أو شغّل خادمًا محليًا للمجلد:
@@ -21,16 +23,11 @@ npx serve .
 | `css/` | أنماط الصفحات |
 | `js/` | المنطق والبيانات (`data.js`, `app.js`, …) |
 
-## الرفع على GitHub
-
-بعد إنشاء مستودع فارغ على GitHub:
-
-```bash
-git remote add origin https://github.com/USERNAME/REPO.git
-git branch -M main
-git push -u origin main
-```
+ملفات PDF في المجلد **لا تُرفع** للمستودع (مُستثناة في `.gitignore`); المحتوى المستخدم في الموقع موجود في `js/data.js` وملفات JS الأخرى.
 
 ## GitHub Pages
 
-من إعدادات المستودع: **Settings → Pages → Branch: main / folder: root** لنشر الموقع.
+من **Settings → Pages**: اختر المصدر **Deploy from a branch**، الفرع **main**، المجلد **/ (root)**.  
+بعد النشر يصبح الموقع على العنوان:
+
+`https://Warithh.github.io/warith-exam-iq/`
