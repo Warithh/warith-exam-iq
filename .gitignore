@@ -1,0 +1,22 @@
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional local overrides
+.env
+.env.*
+
+# مصادر PDF محلية (المشروع يعمل من js/data.js)
+*.pdf

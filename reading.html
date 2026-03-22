@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تمرين القطعة الخارجية مع مؤقت وأسئلة متتابعة وترجمة مساعدة." />
+  <meta name="theme-color" content="#1a5276" />
+  <title>القطعة الخارجية | Warith National Exam Master</title>
+  <link rel="stylesheet" href="css/tools.css" />
+</head>
+<body>
+  <div class="header">
+    <h1>القطعة الخارجية مع أسئلتها</h1>
+    <div class="badge">إعداد المهندس وارث</div>
+    <nav class="nav" aria-label="تنقل الموقع">
+      <a href="index.html">المنصة الرئيسية</a>
+      <a href="reading.html" aria-current="page">القطعة الخارجية</a>
+      <a href="proverbs.html">الأمثال</a>
+      <a href="study_notes_page.html">ملخص المراجعة</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="panel">
+      <div class="controls">
+        <label>اختر القطعة
+          <select id="passageSelect"></select>
+        </label>
+        <label>الوقت (دقيقة)
+          <select id="passageMinutes">
+            <option value="10">10</option>
+            <option value="15" selected>15</option>
+            <option value="20">20</option>
+          </select>
+        </label>
+      </div>
+      <div class="timer-wrap">
+        <div id="pTimerChip" class="timer-chip">الوقت المتبقي: 00:00</div>
+        <div id="pProgressChip" class="timer-chip">الإجابات: 0 / 0</div>
+      </div>
+      <div class="cta">
+        <button class="btn" id="startPassageForm">ابدأ</button>
+      </div>
+    </div>
+
+    <div id="passageFixed" class="passage"></div>
+
+    <div class="progress-container">
+      <div class="progress-row">
+        <span id="pProgressText">السؤال 1</span>
+        <span class="timer-big" id="pTimerDisplay">00:00</span>
+      </div>
+      <div class="progress-bg"><div id="pProgressBar" class="progress-fill"></div></div>
+      <div id="pNavDots" class="nav-dots"></div>
+    </div>
+
+    <div id="passageQuestionStage"></div>
+    <div class="panel">
+      <div class="cta">
+        <button class="btn alt" id="pPrevBtn">السابق</button>
+        <button class="btn" id="pNextBtn">التالي</button>
+        <button class="btn alt" id="pFinishBtn" style="display:none">إنهاء</button>
+      </div>
+    </div>
+
+    <div id="passageFormResult"></div>
+    <div id="passageFormReport"></div>
+  </div>
+
+  <footer>فورمة القطعة تعمل كسؤال تلو الآخر.</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/passages_full.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/reading.js"></script>
+</body>
+</html>
