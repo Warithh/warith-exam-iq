@@ -1,424 +1,491 @@
 /**
- * Warith National Exam Master — منطق الواجهة الرئيسية
- * يعتمد على APP_DATA من data.js (أسئلة + قطع + إحصاءات).
+ * Warith Exam — منطق الواجهة
+ * 3 أوضاع: الأسئلة الشاملة | أسئلة القطعة | المراجعة العامة
  */
-
 (function () {
   "use strict";
 
+  /* ── حماية ────────────────────────────────── */
   if (typeof APP_DATA === "undefined" || !APP_DATA.questions) {
     document.addEventListener("DOMContentLoaded", function () {
       document.body.innerHTML =
-        '<main class="wrap" style="padding:2rem;text-align:center;font-family:Tajawal,sans-serif"><p>تعذّر تحميل بيانات الأسئلة. تأكد من وجود الملف <code>js/data.js</code> ومسار التحميل صحيح.</p></main>';
+        '<div style="padding:3rem;text-align:center;font-family:Tajawal,sans-serif">' +
+        '<p>تعذّر تحميل البيانات. تأكد من ملف <code>js/data.js</code>.</p></div>';
     });
     return;
   }
 
-  /* ---------- ثوابت ---------- */
-  const QUESTIONS = APP_DATA.questions;
-  const PASSAGES = APP_DATA.passages || [];
-  const SECTION_LABELS = {
-    all: "كل الأقسام",
-    grammar: "Grammar - القواعد",
-    conversation: "Conversations - المحادثات",
-    function: "Functions - وظائف اللغة",
-    reading: "Reading - القطعة الخارجية",
-  };
-  const STORE_KEY = "warith_exam_master_progress_v2";
+  /* ── بيانات ────────────────────────────────── */
+  const QS = APP_DATA.questions;
+  const PASSAGES = (typeof PASSAGES_FULL !== "undefined" ? PASSAGES_FULL : [])
+    .concat(APP_DATA.passages || []);
 
-  const state = {
-    examQuestions: [],
-    timer: null,
-    secondsLeft: 0,
-    progress: loadProgress(),
+  const SEC = {
+    all:          "كل الأقسام",
+    grammar:      "Grammar — القواعد",
+    conversation: "Conversations — المحادثات",
+    function:     "Functions — وظائف اللغة",
+    reading:      "Reading — القطعة",
   };
 
-  /* ---------- أدوات DOM ---------- */
-  function $(sel) {
-    return document.querySelector(sel);
-  }
-  function $$(sel) {
-    return Array.from(document.querySelectorAll(sel));
-  }
+  const STORE = "warith_v3";
 
-  /* ---------- التخزين المحلي ---------- */
-  function loadProgress() {
-    try {
-      return JSON.parse(localStorage.getItem(STORE_KEY)) || { attempts: 0, best: 0, wrongMap: {} };
-    } catch {
-      return { attempts: 0, best: 0, wrongMap: {} };
-    }
-  }
+  /* ── حالة الامتحان ─────────────────────────── */
+  let examState = { qs: [], timer: null, secs: 0, submitted: false };
 
-  function saveProgress() {
-    localStorage.setItem(STORE_KEY, JSON.stringify(state.progress));
-    renderProgressStats();
-    renderWeakness();
-  }
-
-  /* ---------- مساعدات عامة ---------- */
-  function shuffle(arr) {
-    const copy = [...arr];
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy;
-  }
-
-  function esc(v) {
-    return String(v ?? "").replace(/[&<>"']/g, (s) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s]));
-  }
-
-  function uniqueSources() {
-    return ["all", ...new Set(QUESTIONS.map((q) => q.source).filter(Boolean))];
-  }
-
-  function fillSectionSelect(sel) {
-    sel.innerHTML = Object.entries(SECTION_LABELS)
-      .map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`)
-      .join("");
-  }
-
-  function fillSourceSelect(sel) {
-    sel.innerHTML = uniqueSources()
-      .map((src) => `<option value="${esc(src)}">${src === "all" ? "كل المصادر" : esc(src)}</option>`)
-      .join("");
-  }
-
-  function getQuestions(section, source, search) {
-    const sec = section || "all";
-    const src = source || "all";
-    const term = (search || "").trim().toLowerCase();
-    return QUESTIONS.filter((q) => {
-      const okSection = sec === "all" || q.section === sec;
-      const okSource = src === "all" || q.source === src;
-      const blob = `${q.question} ${q.prompt || ""} ${q.topic || ""}`.toLowerCase();
-      const okSearch = !term || blob.includes(term);
-      return okSection && okSource && okSearch;
+  /* ── مساعدات ───────────────────────────────── */
+  function $(s)    { return document.querySelector(s) }
+  function $$(s)   { return Array.from(document.querySelectorAll(s)) }
+  function esc(v)  {
+    return String(v ?? "").replace(/[&<>"']/g, function (c) {
+      return { "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c];
     });
   }
-
-  /* ---------- وضع الدراسة ---------- */
-  function renderStudy() {
-    const section = $("#studySection").value;
-    const source = $("#studySource").value;
-    const search = $("#studySearch").value;
-    const list = getQuestions(section, source, search);
-    const box = $("#studyList");
-    if (!list.length) {
-      box.innerHTML = `<div class="empty">لا توجد نتائج بهذا الفلتر.</div>`;
-      return;
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
     }
-    box.innerHTML = list
-      .map(
-        (q) => `
-    <article class="card">
-      <div class="meta">
-        <span class="badge">${esc(SECTION_LABELS[q.section] || q.section)}</span>
-        <span class="badge muted">${esc(q.topic || "general")}</span>
-        <span class="badge muted">${esc(q.source || "-")}</span>
-      </div>
-      ${q.prompt ? `<div class="prompt">${esc(q.prompt)}</div>` : ""}
-      <h3 class="qtitle">${esc(q.question)}</h3>
-      <div class="options">
-        ${q.options
-          .map(
-            (o, i) =>
-              `<div class="option ${i === q.answer ? "correct" : ""}"><strong>${String.fromCharCode(65 + i)}.</strong><span>${esc(o)}</span></div>`
-          )
-          .join("")}
-      </div>
-      <div class="answer"><strong>الجواب الصحيح:</strong> ${esc(q.options[q.answer] ?? "")}</div>
-      <div class="explain"><strong>سبب الاختيار:</strong> ${esc(q.explanation || "راجع الفكرة العامة للسؤال.")}</div>
-    </article>
-  `
-      )
-      .join("");
+    return a;
+  }
+  function loadProg() {
+    try { return JSON.parse(localStorage.getItem(STORE)) || { attempts:0, best:0 }; }
+    catch { return { attempts:0, best:0 }; }
+  }
+  function saveProg(p) { localStorage.setItem(STORE, JSON.stringify(p)); }
+
+  /* ══════════════════════════════════════════════
+     وضع 1 — الأسئلة الشاملة (امتحان)
+  ══════════════════════════════════════════════ */
+
+  function buildExamSectionOptions() {
+    const sel = $("#examSection");
+    sel.innerHTML = Object.entries(SEC)
+      .map(([v,l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("");
   }
 
-  function renderProgressStats() {
-    $("#metricAttempts").textContent = state.progress.attempts || 0;
-    $("#metricBest").textContent = `${Math.round(state.progress.best || 0)}%`;
-    const wrongCount = Object.keys(state.progress.wrongMap || {}).length;
-    $("#metricWrong").textContent = wrongCount;
-    $("#statWeak").textContent = wrongCount;
-  }
+  /* ترتيب الأقسام */
+  const SEC_ORDER = { grammar: 0, function: 1, conversation: 2, reading: 3 };
 
-  /* ---------- وضع الامتحان ---------- */
   function startExam() {
     const section = $("#examSection").value;
-    const source = $("#examSource").value;
-    const count = parseInt($("#examCount").value, 10);
-    const minutes = parseInt($("#examMinutes").value, 10);
-    const pool = getQuestions(section, source, "").filter((q) => q.options && q.options.length >= 2);
-    if (!pool.length) {
-      alert("لا توجد أسئلة بهذا الاختيار.");
-      return;
-    }
-    state.examQuestions = shuffle(pool).slice(0, Math.min(count, pool.length));
-    state.secondsLeft = minutes * 60;
-    $("#examShell").classList.remove("hidden");
-    $("#resultBox").classList.add("hidden");
-    $("#examInfo").textContent = String(state.examQuestions.length);
-    renderExam();
+    const count   = parseInt($("#examCount").value, 10);
+    const mins    = parseInt($("#examMinutes").value, 10);
+
+    const pool = QS.filter(function (q) {
+      return (section === "all" || q.section === section) && q.options?.length >= 2;
+    });
+
+    if (!pool.length) { alert("لا توجد أسئلة بهذا القسم."); return; }
+
+    /* خلط ثم ترتيب حسب القسم */
+    const sliced = shuffle(pool).slice(0, Math.min(count, pool.length));
+    sliced.sort(function (a, b) {
+      return (SEC_ORDER[a.section] ?? 9) - (SEC_ORDER[b.section] ?? 9);
+    });
+
+    examState.qs        = sliced;
+    examState.secs      = mins * 60;
+    examState.submitted = false;
+
+    $("#examSetup").classList.add("hidden");
+    $("#examRun").classList.remove("hidden");
+    $("#examResult").classList.add("hidden");
+    $("#examInfo").textContent = examState.qs.length + " سؤال";
+
+    renderExamQuestions();
     startTimer();
-    document.getElementById("exam").scrollIntoView({ behavior: "smooth" });
   }
 
-  function renderExam() {
-    const box = $("#examList");
-    box.innerHTML = state.examQuestions
-      .map(
-        (q, idx) => `
-    <article class="card exam-card" data-qid="${esc(q.id)}">
-      <div class="meta">
-        <span class="badge">${idx + 1}</span>
-        <span class="badge muted">${esc(SECTION_LABELS[q.section] || q.section)}</span>
-        <span class="badge muted">${esc(q.source)}</span>
-      </div>
-      ${q.prompt ? `<div class="prompt">${esc(q.prompt)}</div>` : ""}
-      <h3 class="qtitle">${esc(q.question)}</h3>
-      <div class="options">
-        ${q.options
-          .map(
-            (o, i) => `
-          <label class="option">
-            <input type="radio" name="exam_${idx}" value="${i}" />
-            <span><strong>${String.fromCharCode(65 + i)}.</strong> ${esc(o)}</span>
-          </label>
-        `
-          )
-          .join("")}
-      </div>
-    </article>
-  `
-      )
-      .join("");
+  function renderExamQuestions() {
+    let html       = "";
+    let lastSec    = null;
+    let secNum     = 0;
+    let globalIdx  = 0;
+
+    examState.qs.forEach(function (q, i) {
+      /* رأس قسم جديد */
+      if (q.section !== lastSec) {
+        if (lastSec !== null) html += "</div>"; /* إغلاق المجموعة السابقة */
+        lastSec = q.section;
+        secNum++;
+        html += `
+          <div class="sec-group">
+            <div class="sec-header">
+              <span class="sec-num">${secNum}</span>
+              ${esc(SEC[q.section] || q.section)}
+            </div>`;
+      }
+
+      html += `
+        <article class="qcard" data-qi="${i}">
+          <div class="meta">
+            <span class="badge num">${i + 1}</span>
+          </div>
+          ${q.prompt ? `<div class="prompt">${esc(q.prompt)}</div>` : ""}
+          <p class="qtitle">${esc(q.question)}</p>
+          <div class="options">
+            ${q.options.map(function (o, j) {
+              return `<label class="option">
+                <input type="radio" name="eq_${i}" value="${j}" />
+                <span><strong>${String.fromCharCode(65+j)}.</strong> ${esc(o)}</span>
+              </label>`;
+            }).join("")}
+          </div>
+        </article>`;
+    });
+
+    if (lastSec !== null) html += "</div>"; /* إغلاق آخر مجموعة */
+    $("#examList").innerHTML = html;
   }
 
   function startTimer() {
-    clearInterval(state.timer);
-    updateTimer();
-    state.timer = setInterval(function () {
-      state.secondsLeft -= 1;
-      updateTimer();
-      if (state.secondsLeft <= 0) {
-        clearInterval(state.timer);
-        submitExam(true);
-      }
+    clearInterval(examState.timer);
+    updateTimerDisplay();
+    examState.timer = setInterval(function () {
+      examState.secs--;
+      updateTimerDisplay();
+      if (examState.secs <= 0) { clearInterval(examState.timer); submitExam(true); }
     }, 1000);
   }
 
-  function updateTimer() {
-    const mins = String(Math.max(0, Math.floor(state.secondsLeft / 60))).padStart(2, "0");
-    const secs = String(Math.max(0, state.secondsLeft % 60)).padStart(2, "0");
-    $("#timerText").textContent = `${mins}:${secs}`;
+  function updateTimerDisplay() {
+    const t   = Math.max(0, examState.secs);
+    const el  = $("#timerDisplay");
+    el.textContent = pad(Math.floor(t/60)) + ":" + pad(t % 60);
+    el.parentElement.classList.toggle("urgent", t > 0 && t <= 60);
   }
+
+  function pad(n) { return String(n).padStart(2,"0") }
 
   function submitExam(auto) {
-    clearInterval(state.timer);
-    const review = [];
-    let correct = 0;
-    state.examQuestions.forEach(function (q, idx) {
-      const picked = document.querySelector(`input[name="exam_${idx}"]:checked`);
-      const chosen = picked ? parseInt(picked.value, 10) : -1;
-      const ok = chosen === q.answer;
-      if (ok) correct += 1;
-      if (!ok) {
-        state.progress.wrongMap[q.id] = {
-          id: q.id,
-          question: q.question,
-          prompt: q.prompt || "",
-          section: q.section,
-          topic: q.topic || "",
-          source: q.source || "",
-          options: q.options,
-          answer: q.answer,
-          explanation: q.explanation || "",
-          chosen,
-        };
-      } else {
-        delete state.progress.wrongMap[q.id];
-      }
-      review.push({ ...q, chosen, ok });
-    });
-    const pct = state.examQuestions.length ? (correct / state.examQuestions.length) * 100 : 0;
-    state.progress.attempts += 1;
-    state.progress.best = Math.max(state.progress.best || 0, pct);
-    saveProgress();
+    if (!auto) {
+      const unanswered = examState.qs.filter(function (_, i) {
+        return !document.querySelector(`input[name="eq_${i}"]:checked`);
+      }).length;
+      if (unanswered > 0 && !confirm(`لديك ${unanswered} سؤال بدون إجابة. تسليم الآن؟`)) return;
+    }
+    clearInterval(examState.timer);
+    examState.submitted = true;
 
-    const box = $("#resultBox");
-    box.classList.remove("hidden");
-    box.innerHTML = `
-    <div class="summary-card">
-      <div class="meta">
-        <span class="badge">${auto ? "تم التسليم تلقائيًا" : "تم التسليم"}</span>
-        <span class="badge muted">الصحيح: ${correct} / ${state.examQuestions.length}</span>
+    let correct = 0;
+    const review = examState.qs.map(function (q, i) {
+      const picked  = document.querySelector(`input[name="eq_${i}"]:checked`);
+      const chosen  = picked ? parseInt(picked.value, 10) : -1;
+      const ok      = chosen === q.answer;
+      if (ok) correct++;
+      return { ...q, chosen, ok };
+    });
+
+    const pct  = examState.qs.length ? Math.round(correct / examState.qs.length * 100) : 0;
+    const prog = loadProg();
+    prog.attempts++;
+    prog.best = Math.max(prog.best || 0, pct);
+    saveProg(prog);
+
+    const col = pct >= 70 ? "#0f766e" : pct >= 50 ? "#d97706" : "#dc2626";
+
+    $("#examRun").classList.add("hidden");
+    const res = $("#examResult");
+    res.classList.remove("hidden");
+    res.innerHTML = `
+      <div class="result-card">
+        <span class="score-num" style="color:${col}">${pct}%</span>
+        <span class="score-sub">
+          ${auto ? "انتهى الوقت — " : ""}
+          أجبت صحيحًا على ${correct} من ${examState.qs.length} سؤال
+        </span>
       </div>
-      <div class="score">${Math.round(pct)}%</div>
-      <p>راجع الأخطاء بالأسفل. كل خطأ تم حفظه أيضًا في قسم <strong>نقاط الضعف</strong>.</p>
-    </div>
-    <div class="stack">
-      ${review
-        .map(
-          (q, idx) => `
-        <article class="card">
+      <div class="stack">
+        ${review.map(function (q, i) {
+          return `
+          <article class="qcard">
+            <div class="meta">
+              <span class="badge num">${i+1}</span>
+              <span class="badge ${q.ok ? "" : "grey"}">${q.ok ? "✓ صحيحة" : "✗ خاطئة"}</span>
+              <span class="badge grey">${esc(SEC[q.section]||q.section)}</span>
+            </div>
+            ${q.prompt ? `<div class="prompt">${esc(q.prompt)}</div>` : ""}
+            <p class="qtitle">${esc(q.question)}</p>
+            <div class="options">
+              ${q.options.map(function (o, j) {
+                let cls = "";
+                if (j === q.answer)                   cls = "correct";
+                if (j === q.chosen && j !== q.answer) cls = "wrong";
+                return `<div class="option ${cls}">
+                  <strong>${String.fromCharCode(65+j)}.</strong>
+                  <span>${esc(o)}</span>
+                </div>`;
+              }).join("")}
+            </div>
+            <div class="answer-box show"><strong>الجواب الصحيح:</strong> ${esc(q.options[q.answer]??'')}</div>
+            <div class="explain-box show"><strong>السبب:</strong> ${esc(q.explanation||'راجع الفكرة الأساسية.')}</div>
+          </article>`;
+        }).join("")}
+      </div>
+    `;
+    res.scrollIntoView({ behavior:"smooth", block:"start" });
+  }
+
+  function resetExam() {
+    clearInterval(examState.timer);
+    examState = { qs:[], timer:null, secs:0, submitted:false };
+    $("#examSetup").classList.remove("hidden");
+    $("#examRun").classList.add("hidden");
+    $("#examResult").classList.add("hidden");
+  }
+
+  /* ══════════════════════════════════════════════
+     وضع 2 — أسئلة القطعة
+  ══════════════════════════════════════════════ */
+
+  function buildPassageList() {
+    const sel = $("#passageSelect");
+    if (!PASSAGES.length) {
+      sel.innerHTML = '<option>لا توجد قطع</option>';
+      return;
+    }
+    sel.innerHTML = PASSAGES.map(function (p, i) {
+      return `<option value="${i}">${esc(p.title || "قطعة " + (i+1))}</option>`;
+    }).join("");
+    showPassage(0);
+  }
+
+  function showPassage(idx) {
+    const p = PASSAGES[idx];
+    if (!p) return;
+
+    $("#passageTitle").textContent   = p.title  || "القطعة";
+    $("#passageSource").textContent  = p.source || "-";
+    $("#passageBody").textContent    = p.text   || "";
+
+    const qbox = $("#passageQList");
+
+    if (!p.questions || !p.questions.length) {
+      qbox.innerHTML = '<div class="empty">لا توجد أسئلة لهذه القطعة.</div>';
+      return;
+    }
+
+    /* رسم الأسئلة بدون إجابات */
+    qbox.innerHTML = p.questions.map(function (q, i) {
+      return `
+        <article class="qcard" id="pq_card_${idx}_${i}">
+          <p class="qtitle">${i + 1}. ${esc(q.question)}</p>
+          <div class="options">
+            ${(q.options || []).map(function (o, j) {
+              return `<label class="option">
+                <input type="radio" name="pq_${idx}_${i}" value="${j}" />
+                <span><strong>${String.fromCharCode(65 + j)}.</strong> ${esc(o)}</span>
+              </label>`;
+            }).join("")}
+          </div>
+          <div class="answer-box"></div>
+        </article>`;
+    }).join("") + `
+      <div style="text-align:center;margin-top:14px">
+        <button class="btn btn-primary" id="checkPassageBtn">
+          تحقق من الإجابات
+        </button>
+      </div>`;
+
+    /* زر التحقق */
+    document.getElementById("checkPassageBtn").addEventListener("click", function () {
+      let correct = 0;
+      p.questions.forEach(function (q, i) {
+        const card   = document.getElementById("pq_card_" + idx + "_" + i);
+        const picked = document.querySelector(`input[name="pq_${idx}_${i}"]:checked`);
+        const chosen = picked ? parseInt(picked.value, 10) : -1;
+        const aBox   = card.querySelector(".answer-box");
+
+        /* تلوين الخيارات */
+        card.querySelectorAll(".option").forEach(function (opt, j) {
+          opt.classList.remove("correct", "wrong");
+          if (j === q.answer) opt.classList.add("correct");
+          if (j === chosen && j !== q.answer) opt.classList.add("wrong");
+        });
+
+        /* عرض الإجابة */
+        const optText = (q.options && q.options[q.answer]) ? esc(q.options[q.answer]) : "";
+        aBox.innerHTML = `<strong>الإجابة الصحيحة:</strong> ${optText}`;
+        aBox.classList.add("show");
+
+        if (chosen === q.answer) correct++;
+      });
+
+      /* نتيجة صغيرة */
+      this.textContent = `أجبت صحيحًا على ${correct} من ${p.questions.length} سؤال`;
+      this.disabled = true;
+      this.classList.remove("btn-primary");
+      this.classList.add("btn-ghost");
+    });
+  }
+
+  /* ══════════════════════════════════════════════
+     وضع 3 — المراجعة العامة
+  ══════════════════════════════════════════════ */
+
+  let reviewActiveSec = "all";
+
+  function buildReviewStats() {
+    const counts = { all: QS.length };
+    QS.forEach(function (q) {
+      counts[q.section] = (counts[q.section] || 0) + 1;
+    });
+    const labels = { all: "الكل", grammar: "Grammar", function: "Functions", conversation: "Conversations" };
+    const statsEl = $("#reviewStats");
+    if (!statsEl) return;
+    statsEl.innerHTML = Object.entries(counts).map(function ([sec, n]) {
+      return `<span class="stat-pill ${sec}">
+        <span>${labels[sec] || sec}</span>
+        <strong>${n}</strong>
+      </span>`;
+    }).join("");
+  }
+
+  function renderReview() {
+    const sec  = reviewActiveSec;
+    const term = ($("#reviewSearch").value || "").trim().toLowerCase();
+
+    const list = QS.filter(function (q) {
+      const okSec  = sec === "all" || q.section === sec;
+      const blob   = (q.question + " " + (q.prompt||"") + " " + (q.topic||"")).toLowerCase();
+      const okTerm = !term || blob.includes(term);
+      return okSec && okTerm;
+    });
+
+    /* عداد النتائج */
+    const countEl = $("#reviewCount");
+    if (countEl) countEl.textContent = list.length + " سؤال";
+
+    const box = $("#reviewList");
+    if (!list.length) {
+      box.innerHTML = '<div class="empty">لا توجد نتائج.</div>';
+      return;
+    }
+
+    box.innerHTML = list.map(function (q, i) {
+      const rid = "rv_" + i;
+      return `
+        <article class="qcard" id="${rid}">
           <div class="meta">
-            <span class="badge">${idx + 1}</span>
-            <span class="badge ${q.ok ? "" : "muted"}">${q.ok ? "إجابة صحيحة" : "إجابة خاطئة"}</span>
-            <span class="badge muted">${esc(SECTION_LABELS[q.section] || q.section)}</span>
+            <span class="badge grey">${esc(SEC[q.section]||q.section)}</span>
+            <span class="badge grey">${esc(q.topic||"")}</span>
           </div>
           ${q.prompt ? `<div class="prompt">${esc(q.prompt)}</div>` : ""}
-          <h3 class="qtitle">${esc(q.question)}</h3>
+          <p class="qtitle">${esc(q.question)}</p>
           <div class="options">
-            ${q.options
-              .map((o, i) => {
-                let cls = "";
-                if (i === q.answer) cls = "correct";
-                if (i === q.chosen && i !== q.answer) cls = "wrong";
-                return `<div class="option ${cls}"><strong>${String.fromCharCode(65 + i)}.</strong><span>${esc(o)}</span></div>`;
-              })
-              .join("")}
+            ${q.options.map(function (o, j) {
+              return `<div class="option" data-j="${j}">
+                <strong>${String.fromCharCode(65+j)}.</strong>
+                <span>${esc(o)}</span>
+              </div>`;
+            }).join("")}
           </div>
-          <div class="answer"><strong>الجواب الصحيح:</strong> ${esc(q.options[q.answer] ?? "")}</div>
-          <div class="explain"><strong>سبب الخطأ / سبب الاختيار:</strong> ${esc(q.explanation || "راجع الفكرة الأساسية لهذا السؤال.")}</div>
-        </article>
-      `
-        )
-        .join("")}
-    </div>
-  `;
-    document.getElementById("resultBox").scrollIntoView({ behavior: "smooth" });
-  }
+          <div class="reveal-bar">
+            <button class="btn-reveal" data-ans="${q.answer}"
+                    data-exp="${esc(q.explanation||'راجع الفكرة الأساسية.')}"
+                    data-rid="${rid}">
+              إظهار الإجابة
+            </button>
+          </div>
+          <div class="answer-box"></div>
+          <div class="explain-box"></div>
+        </article>`;
+    }).join("");
 
-  /* ---------- القراءة (قطع) ---------- */
-  function renderPassages() {
-    const select = $("#passageSelect");
-    select.innerHTML = PASSAGES.map((p, i) => `<option value="${i}">${esc(p.title || "قطعة " + (i + 1))}</option>`).join("");
-    if (PASSAGES.length) showPassage(0);
-  }
+    /* أحداث أزرار الإظهار */
+    box.querySelectorAll(".btn-reveal").forEach(function (btn) {
+      btn.addEventListener("click", function handleReveal() {
+        const card     = document.getElementById(btn.dataset.rid);
+        const ansIdx   = parseInt(btn.dataset.ans, 10);
+        const exp      = btn.dataset.exp;
+        const opts     = card.querySelectorAll(".option");
+        const aBox     = card.querySelector(".answer-box");
+        const eBox     = card.querySelector(".explain-box");
+        const shown    = aBox.classList.contains("show");
 
-  function showPassage(index) {
-    const p = PASSAGES[index];
-    if (!p) return;
-    $("#passageMetaSource").textContent = p.source || "-";
-    $("#passageMetaCount").textContent = `${p.question_count || 0} سؤال`;
-    $("#passageTitle").textContent = p.title || "Reading passage";
-    $("#passageText").textContent = p.text || "";
-    const box = $("#passageQuestions");
-    if (!p.questions || !p.questions.length) {
-      box.innerHTML = `<div class="empty">لا توجد أسئلة محفوظة لهذه القطعة داخل الملف.</div>`;
-      return;
-    }
-    box.innerHTML = p.questions
-      .map(
-        (q, idx) => `
-    <article class="card">
-      <h4 class="qtitle">${idx + 1}. ${esc(q.question)}</h4>
-      <div class="options">
-        ${(q.options || [])
-          .map(
-            (o, i) =>
-              `<div class="option ${q.answer === i ? "correct" : ""}"><strong>${String.fromCharCode(65 + i)}.</strong><span>${esc(o)}</span></div>`
-          )
-          .join("")}
-      </div>
-      ${typeof q.answer === "number" ? `<div class="answer"><strong>الإجابة:</strong> ${esc(q.options[q.answer])}</div>` : ""}
-    </article>
-  `
-      )
-      .join("");
-  }
-
-  /* ---------- نقاط الضعف ---------- */
-  function renderWeakness() {
-    const entries = Object.values(state.progress.wrongMap || {});
-    const box = $("#weaknessBox");
-    if (!entries.length) {
-      box.innerHTML = `<div class="empty">لا توجد أخطاء محفوظة الآن. هذا ممتاز — استمر.</div>`;
-      return;
-    }
-    box.innerHTML = entries
-      .map(
-        (q, idx) => `
-    <article class="card">
-      <div class="meta">
-        <span class="badge">${idx + 1}</span>
-        <span class="badge muted">${esc(SECTION_LABELS[q.section] || q.section)}</span>
-        <span class="badge muted">${esc(q.source || "-")}</span>
-      </div>
-      ${q.prompt ? `<div class="prompt">${esc(q.prompt)}</div>` : ""}
-      <h3 class="qtitle">${esc(q.question)}</h3>
-      <div class="options">
-        ${q.options
-          .map((o, i) => {
-            let cls = i === q.answer ? "correct" : "";
-            if (i === q.chosen && i !== q.answer) cls = "wrong";
-            return `<div class="option ${cls}"><strong>${String.fromCharCode(65 + i)}.</strong><span>${esc(o)}</span></div>`;
-          })
-          .join("")}
-      </div>
-      <div class="answer"><strong>الجواب الصحيح:</strong> ${esc(q.options[q.answer] || "")}</div>
-      <div class="explain"><strong>ملاحظة سريعة:</strong> ${esc(q.explanation || "")}</div>
-    </article>
-  `
-      )
-      .join("");
-  }
-
-  /* ---------- تهيئة ---------- */
-  function init() {
-    const stats = APP_DATA.stats || { questionCount: QUESTIONS.length, passageCount: PASSAGES.length };
-    $("#statQuestions").textContent = stats.questionCount ?? QUESTIONS.length;
-    $("#statPassages").textContent = stats.passageCount ?? PASSAGES.length;
-
-    fillSectionSelect($("#studySection"));
-    fillSectionSelect($("#examSection"));
-    fillSourceSelect($("#studySource"));
-    fillSourceSelect($("#examSource"));
-
-    $("#studySection").addEventListener("change", renderStudy);
-    $("#studySource").addEventListener("change", renderStudy);
-    $("#studySearch").addEventListener("input", renderStudy);
-    $("#startExamBtn").addEventListener("click", startExam);
-    $("#submitExamBtn").addEventListener("click", function () {
-      submitExam(false);
+        if (shown) {
+          /* إخفاء */
+          opts.forEach(function (o) { o.classList.remove("correct") });
+          aBox.classList.remove("show");
+          eBox.classList.remove("show");
+          btn.textContent = "إظهار الإجابة";
+          btn.classList.remove("shown");
+        } else {
+          /* إظهار */
+          opts.forEach(function (o, j) {
+            o.classList.toggle("correct", j === ansIdx);
+          });
+          aBox.innerHTML = `<strong>الجواب الصحيح:</strong> ${opts[ansIdx]?.querySelector("span")?.textContent||""}`;
+          eBox.innerHTML = `<strong>السبب:</strong> ${exp}`;
+          aBox.classList.add("show");
+          eBox.classList.add("show");
+          btn.textContent = "إخفاء الإجابة";
+          btn.classList.add("shown");
+        }
+      });
     });
+  }
+
+  /* ══════════════════════════════════════════════
+     تبديل الأوضاع
+  ══════════════════════════════════════════════ */
+
+  function switchMode(mode) {
+    $$(".mode-card").forEach(function (c) {
+      c.classList.toggle("active", c.dataset.mode === mode);
+    });
+    $$(".mode-section").forEach(function (s) {
+      s.classList.toggle("active", s.id === "mode-" + mode);
+    });
+
+    /* إذا كان الامتحان جارياً وتم التبديل بعيداً — إيقاف المؤقت */
+    if (mode !== "exam") clearInterval(examState.timer);
+  }
+
+  /* ══════════════════════════════════════════════
+     تهيئة
+  ══════════════════════════════════════════════ */
+
+  document.addEventListener("DOMContentLoaded", function () {
+    /* بطاقات الأوضاع */
+    $$(".mode-card").forEach(function (card) {
+      card.addEventListener("click", function () {
+        switchMode(card.dataset.mode);
+      });
+    });
+
+    /* ── وضع الامتحان ── */
+    buildExamSectionOptions();
+    $("#startExamBtn").addEventListener("click", startExam);
+    $("#submitExamBtn").addEventListener("click", function () { submitExam(false) });
+    $("#retryExamBtn").addEventListener("click", resetExam);
+
+    /* ── وضع القطعة ── */
+    buildPassageList();
     $("#passageSelect").addEventListener("change", function (e) {
       showPassage(parseInt(e.target.value, 10));
     });
-    $("#clearWeakBtn").addEventListener("click", function () {
-      if (confirm("هل تريد مسح سجل الأخطاء المحفوظ؟")) {
-        state.progress.wrongMap = {};
-        saveProgress();
-      }
-    });
-    $$(".chip").forEach(function (btn) {
+
+    /* ── وضع المراجعة ── */
+    buildReviewStats();
+
+    /* أزرار التبويبات */
+    $$(".chip-btn[data-sec]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        $$(".chip").forEach(function (x) {
-          x.classList.remove("active");
-        });
+        $$(".chip-btn[data-sec]").forEach(function (b) { b.classList.remove("active") });
         btn.classList.add("active");
-        $("#studySection").value = btn.dataset.quick || "all";
-        renderStudy();
+        reviewActiveSec = btn.dataset.sec;
+        renderReview();
       });
     });
 
-    renderStudy();
-    renderPassages();
-    renderProgressStats();
-    renderWeakness();
+    $("#reviewSearch").addEventListener("input", renderReview);
+    renderReview();
 
-    /* فتح الصفحة = الانتقال مباشرة إلى الدراسة (بدون تسجيل دخول) */
-    if (!window.location.hash) {
-      window.history.replaceState(null, "", "#study");
-      requestAnimationFrame(function () {
-        var st = document.getElementById("study");
-        if (st) st.scrollIntoView({ block: "start", behavior: "auto" });
-      });
-    }
-  }
+    /* الوضع الافتراضي */
+    switchMode("exam");
+  });
 
-  document.addEventListener("DOMContentLoaded", init);
 })();

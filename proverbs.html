@@ -4,14 +4,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="أمثال إنكليزية شائعة في الامتحان مع معانيها العربية وأمثلة اختبار." />
-  <meta name="theme-color" content="#1a5276" />
-  <title>الأمثال ومعانيها | Warith National Exam Master</title>
+  <meta name="theme-color" content="#0d9488" />
+  <title>الأمثال ومعانيها | Warith National Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tools.css" />
+  <style>
+    /* ── تحسينات خاصة بصفحة الأمثال ── */
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      background: #fff;
+      color: var(--text);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .search-bar input:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(13,148,136,.15);
+    }
+    .proverbs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .proverb-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      border-top: 4px solid var(--primary);
+      transition: transform .2s ease, box-shadow .2s ease;
+      cursor: default;
+    }
+    .proverb-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(13,148,136,.15);
+    }
+    .proverb-card.hidden-card { display: none }
+    .proverb-en {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .proverb-meaning {
+      font-size: .95rem;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .proverb-ar {
+      font-size: .92rem;
+      color: var(--text-light);
+      padding-top: 6px;
+      border-top: 1px dashed var(--border);
+      margin-top: 6px;
+    }
+    .exam-examples { margin-top: 20px }
+    .example-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-right: 5px solid var(--teal);
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      margin-bottom: 12px;
+    }
+    .example-card .q   { font-weight: 800; margin-bottom: 8px; font-size: 1rem }
+    .example-card .ans { color: var(--primary); font-weight: 700; font-size: .95rem }
+    .count-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: .88rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    .no-results {
+      padding: 20px;
+      text-align: center;
+      color: var(--text-light);
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      background: #f8f9fb;
+      display: none;
+    }
+    .section-label {
+      font-size: 1.3em;
+      color: var(--primary);
+      font-weight: 900;
+      margin: 0 0 14px;
+    }
+    @media (max-width: 600px) {
+      .proverbs-grid { grid-template-columns: 1fr }
+    }
+  </style>
 </head>
 <body>
+
   <div class="header">
-    <h1>الأمثال في اللغة الإنكليزية ومعانيها</h1>
-    <div class="badge">محتوى مستخرج ومرتب</div>
+    <h1>الأمثال الإنكليزية ومعانيها</h1>
+    <p>أمثال شائعة في الامتحان الوطني — مع المعنى الإنكليزي والعربي</p>
+    <span class="count-badge" id="countBadge">16 مثَل</span>
     <nav class="nav" aria-label="تنقل الموقع">
       <a href="index.html">المنصة الرئيسية</a>
       <a href="reading.html">القطعة الخارجية</a>
@@ -21,41 +130,188 @@
   </div>
 
   <div class="container">
-    <div class="panel">
-      <div class="section-title">الأمثال ومعانيها (مستخرجة من الملف)</div>
-      <div class="report-item">
-        <div class="q"><strong>Under the weather</strong></div>
-        <div>Feeling sick or unwell - الشعور بالمرض أو التعب.</div>
-      </div>
-      <div class="report-item"><div class="q"><strong>Let the cat out of the bag</strong></div><div>To reveal a secret - إفشاء سر.</div></div>
-      <div class="report-item"><div class="q"><strong>Spill the beans</strong></div><div>To reveal a secret - كشف السر.</div></div>
-      <div class="report-item"><div class="q"><strong>Burn the midnight oil</strong></div><div>To work late into the night - السهر للدراسة/العمل حتى وقت متأخر.</div></div>
-      <div class="report-item"><div class="q"><strong>Cost an arm and a leg</strong></div><div>Very expensive - غالي جدًا.</div></div>
-      <div class="report-item"><div class="q"><strong>Hit the sack</strong></div><div>To go to bed - يذهب للنوم.</div></div>
-      <div class="report-item"><div class="q"><strong>Kick the bucket</strong></div><div>To die - يموت.</div></div>
-      <div class="report-item"><div class="q"><strong>A piece of cake</strong></div><div>Very easy - سهل جدًا.</div></div>
-      <div class="report-item"><div class="q"><strong>Rain cats and dogs</strong></div><div>Heavy rain - مطر شديد.</div></div>
-      <div class="report-item"><div class="q"><strong>Lend me a hand</strong></div><div>Help me - ساعدني.</div></div>
-      <div class="report-item"><div class="q"><strong>See eye to eye</strong></div><div>Agree - يتفق.</div></div>
-      <div class="report-item"><div class="q"><strong>Break the ice</strong></div><div>To start a conversation - يبدأ الحديث/يكسر حاجز الصمت.</div></div>
-      <div class="report-item"><div class="q"><strong>Many cooks spoil the broth</strong></div><div>Too many people ruin the work - كثرة المتدخلين تفسد العمل.</div></div>
-      <div class="report-item"><div class="q"><strong>The pen is mightier than the sword</strong></div><div>Words are more powerful than force - الكلمة أقوى من القوة.</div></div>
-      <div class="report-item"><div class="q"><strong>Barking up the wrong tree</strong></div><div>Following a wrong idea - يسير في اتجاه خاطئ/يفهم خطأ.</div></div>
-      <div class="report-item"><div class="q"><strong>It takes the edge off</strong></div><div>To make things easier - يخفف الصعوبة أو التوتر.</div></div>
+
+    <!-- شريط البحث -->
+    <div class="search-bar">
+      <input
+        type="search"
+        id="proverbSearch"
+        placeholder="ابحث عن مثَل أو معنى..."
+        aria-label="البحث في الأمثال"
+      />
     </div>
 
+    <!-- شبكة الأمثال -->
     <div class="panel">
-      <div class="section-title">أمثلة اختبار (من نفس الملف)</div>
-      <div class="report-item">
-        <div class="q">"The exam was a piece of cake" means:</div>
-        <div class="muted">المعنى الصحيح: The exam was very easy - الامتحان كان سهلًا جدًا.</div>
-      </div>
-      <div class="report-item">
-        <div class="q">The proverb "burn the midnight oil" means:</div>
-        <div class="muted">المعنى الصحيح: To work or study late into the night - الدراسة/العمل حتى وقت متأخر.</div>
-      </div>
-      <div class="muted" style="margin-top:10px">تم استخراج المحتوى نصيًا من ملف الأمثال وترتيبه داخل الصفحة.</div>
+      <div class="section-label">الأمثال ومعانيها</div>
+      <div class="proverbs-grid" id="proverbsGrid">
+
+        <div class="proverb-card" data-en="under the weather" data-ar="الشعور بالمرض">
+          <div class="proverb-en">Under the weather</div>
+          <div class="proverb-meaning">Feeling sick or unwell</div>
+          <div class="proverb-ar">الشعور بالمرض أو التعب</div>
+        </div>
+
+        <div class="proverb-card" data-en="let the cat out of the bag" data-ar="إفشاء سر">
+          <div class="proverb-en">Let the cat out of the bag</div>
+          <div class="proverb-meaning">To reveal a secret accidentally</div>
+          <div class="proverb-ar">إفشاء سر عن طريق الخطأ</div>
+        </div>
+
+        <div class="proverb-card" data-en="spill the beans" data-ar="كشف السر">
+          <div class="proverb-en">Spill the beans</div>
+          <div class="proverb-meaning">To reveal a secret</div>
+          <div class="proverb-ar">كشف السر / الإفصاح عن شيء مخفي</div>
+        </div>
+
+        <div class="proverb-card" data-en="burn the midnight oil" data-ar="السهر للدراسة">
+          <div class="proverb-en">Burn the midnight oil</div>
+          <div class="proverb-meaning">To work or study late into the night</div>
+          <div class="proverb-ar">السهر حتى وقت متأخر للدراسة أو العمل</div>
+        </div>
+
+        <div class="proverb-card" data-en="cost an arm and a leg" data-ar="غالي جداً">
+          <div class="proverb-en">Cost an arm and a leg</div>
+          <div class="proverb-meaning">Very expensive</div>
+          <div class="proverb-ar">غالي جدًا / يكلف ثمنًا باهظًا</div>
+        </div>
+
+        <div class="proverb-card" data-en="hit the sack" data-ar="يذهب للنوم">
+          <div class="proverb-en">Hit the sack</div>
+          <div class="proverb-meaning">To go to bed</div>
+          <div class="proverb-ar">يذهب للنوم / ينام</div>
+        </div>
+
+        <div class="proverb-card" data-en="kick the bucket" data-ar="يموت">
+          <div class="proverb-en">Kick the bucket</div>
+          <div class="proverb-meaning">To die</div>
+          <div class="proverb-ar">يموت (تعبير عامي)</div>
+        </div>
+
+        <div class="proverb-card" data-en="a piece of cake" data-ar="سهل جداً">
+          <div class="proverb-en">A piece of cake</div>
+          <div class="proverb-meaning">Very easy</div>
+          <div class="proverb-ar">سهل جدًا / لا يكلّف جهدًا</div>
+        </div>
+
+        <div class="proverb-card" data-en="rain cats and dogs" data-ar="مطر شديد">
+          <div class="proverb-en">Rain cats and dogs</div>
+          <div class="proverb-meaning">To rain very heavily</div>
+          <div class="proverb-ar">مطر شديد / أمطار غزيرة</div>
+        </div>
+
+        <div class="proverb-card" data-en="lend me a hand" data-ar="ساعدني">
+          <div class="proverb-en">Lend me a hand</div>
+          <div class="proverb-meaning">Please help me</div>
+          <div class="proverb-ar">ساعدني / أعطني يد العون</div>
+        </div>
+
+        <div class="proverb-card" data-en="see eye to eye" data-ar="يتفق">
+          <div class="proverb-en">See eye to eye</div>
+          <div class="proverb-meaning">To agree with someone</div>
+          <div class="proverb-ar">يتفق مع شخص ما / يرى رأيه</div>
+        </div>
+
+        <div class="proverb-card" data-en="break the ice" data-ar="يبدأ الحديث">
+          <div class="proverb-en">Break the ice</div>
+          <div class="proverb-meaning">To start a conversation or ease tension</div>
+          <div class="proverb-ar">يبدأ الحديث / يكسر حاجز الصمت</div>
+        </div>
+
+        <div class="proverb-card" data-en="many cooks spoil the broth" data-ar="كثرة المتدخلين">
+          <div class="proverb-en">Many cooks spoil the broth</div>
+          <div class="proverb-meaning">Too many people involved ruins the work</div>
+          <div class="proverb-ar">كثرة المتدخلين تفسد العمل</div>
+        </div>
+
+        <div class="proverb-card" data-en="the pen is mightier than the sword" data-ar="الكلمة أقوى">
+          <div class="proverb-en">The pen is mightier than the sword</div>
+          <div class="proverb-meaning">Words and writing are more powerful than force</div>
+          <div class="proverb-ar">الكلمة أقوى من السلاح / القلم أمضى من السيف</div>
+        </div>
+
+        <div class="proverb-card" data-en="barking up the wrong tree" data-ar="يسير في الاتجاه الخاطئ">
+          <div class="proverb-en">Barking up the wrong tree</div>
+          <div class="proverb-meaning">Following a wrong lead or mistaken idea</div>
+          <div class="proverb-ar">يسير في الاتجاه الخاطئ / يفهم الأمر بشكل خاطئ</div>
+        </div>
+
+        <div class="proverb-card" data-en="it takes the edge off" data-ar="يخفف الصعوبة">
+          <div class="proverb-en">It takes the edge off</div>
+          <div class="proverb-meaning">To reduce the intensity or difficulty of something</div>
+          <div class="proverb-ar">يخفف الصعوبة أو التوتر</div>
+        </div>
+
+      </div><!-- /proverbs-grid -->
+      <div class="no-results" id="noResults">لا توجد نتائج مطابقة للبحث.</div>
     </div>
-  </div>
+
+    <!-- أمثلة الامتحان -->
+    <div class="panel exam-examples">
+      <div class="section-label">أمثلة اختبار (أسئلة متوقعة)</div>
+
+      <div class="example-card">
+        <div class="q">"The exam was a piece of cake" — what does this mean?</div>
+        <div class="ans">The exam was very easy.</div>
+        <div class="muted">الامتحان كان سهلًا جدًا.</div>
+      </div>
+
+      <div class="example-card">
+        <div class="q">The proverb "Burn the midnight oil" means:</div>
+        <div class="ans">To work or study late into the night.</div>
+        <div class="muted">الدراسة أو العمل حتى وقت متأخر من الليل.</div>
+      </div>
+
+      <div class="example-card">
+        <div class="q">If someone says "It cost me an arm and a leg", they mean:</div>
+        <div class="ans">It was very expensive.</div>
+        <div class="muted">كان غاليًا جدًا.</div>
+      </div>
+
+      <div class="example-card">
+        <div class="q">What does "Break the ice" mean in a social situation?</div>
+        <div class="ans">To start a conversation and ease tension.</div>
+        <div class="muted">البدء بالحديث وكسر حاجز الصمت في موقف اجتماعي.</div>
+      </div>
+
+      <div class="example-card">
+        <div class="q">"Many cooks spoil the broth" is a proverb that means:</div>
+        <div class="ans">Too many people involved in something can ruin it.</div>
+        <div class="muted">كثرة التدخل في الأمور تفسدها.</div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <footer style="text-align:center;padding:20px;color:var(--text-light);font-size:.92rem">
+    Warith National Exam — الأمثال الإنكليزية ومعانيها
+  </footer>
+
+  <script>
+    (function () {
+      const input  = document.getElementById("proverbSearch");
+      const cards  = Array.from(document.querySelectorAll(".proverb-card"));
+      const noRes  = document.getElementById("noResults");
+      const badge  = document.getElementById("countBadge");
+
+      function filter() {
+        const term = input.value.trim().toLowerCase();
+        let visible = 0;
+        cards.forEach(function (card) {
+          const en = (card.dataset.en || "").toLowerCase();
+          const ar = (card.dataset.ar || "").toLowerCase();
+          const txt = card.textContent.toLowerCase();
+          const match = !term || en.includes(term) || ar.includes(term) || txt.includes(term);
+          card.classList.toggle("hidden-card", !match);
+          if (match) visible++;
+        });
+        noRes.style.display  = visible === 0 ? "block" : "none";
+        badge.textContent    = visible + " مثَل";
+      }
+
+      input.addEventListener("input", filter);
+    })();
+  </script>
+
 </body>
 </html>

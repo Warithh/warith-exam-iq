@@ -1920,6 +1920,595 @@ const APP_DATA = {
       "answer": 2,
       "explanation": "used to",
       "uid": 114
+    },
+
+    /* ═══════════════════════════════════════════
+       Grammar — قواعد (25 أسئلة جديدة)
+    ═══════════════════════════════════════════ */
+    {
+      "id": "new-g-1", "section": "grammar", "topic": "conditional type 2",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "If I ______ you, I would tell the truth.",
+      "options": ["am","were","was","will be"],
+      "answer": 1,
+      "explanation": "في الجملة الشرطية من النوع الثاني نستخدم were مع جميع الضمائر.",
+      "uid": 115
+    },
+    {
+      "id": "new-g-2", "section": "grammar", "topic": "passive — present simple",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "English ______ all over the world.",
+      "options": ["speaks","is spoke","is spoken","spoken"],
+      "answer": 2,
+      "explanation": "المبني للمجهول في المضارع البسيط: is/am/are + past participle.",
+      "uid": 116
+    },
+    {
+      "id": "new-g-3", "section": "grammar", "topic": "present perfect — since",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "She ______ here since 2015.",
+      "options": ["lives","lived","is living","has lived"],
+      "answer": 3,
+      "explanation": "مع since/for نستخدم المضارع التام: has/have + past participle.",
+      "uid": 117
+    },
+    {
+      "id": "new-g-4", "section": "grammar", "topic": "past perfect",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "When I arrived at the station, the train ______ already left.",
+      "options": ["has","have","had","was"],
+      "answer": 2,
+      "explanation": "نستخدم الماضي التام (had + past participle) للحدث الذي وقع قبل حدث آخر في الماضي.",
+      "uid": 118
+    },
+    {
+      "id": "new-g-5", "section": "grammar", "topic": "modal — obligation",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "You ______ wear a seatbelt in a car. It's the law.",
+      "options": ["might","could","must","would"],
+      "answer": 2,
+      "explanation": "must يعبر عن الإلزام والضرورة.",
+      "uid": 119
+    },
+    {
+      "id": "new-g-6", "section": "grammar", "topic": "relative pronoun",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "This is the house ______ I was born in.",
+      "options": ["who","whose","whom","which"],
+      "answer": 3,
+      "explanation": "which تُستخدم للأشياء في جمل الوصل.",
+      "uid": 120
+    },
+    {
+      "id": "new-g-7", "section": "grammar", "topic": "superlative",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "The Amazon is ______ river in the world.",
+      "options": ["the longest","longer","most long","the more long"],
+      "answer": 0,
+      "explanation": "التفضيل الأعلى للصفات القصيرة: the + adjective + est.",
+      "uid": 121
+    },
+    {
+      "id": "new-g-8", "section": "grammar", "topic": "wish — present",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "I wish I ______ swim, but I can't.",
+      "options": ["can","could","will","would"],
+      "answer": 1,
+      "explanation": "بعد wish للتعبير عن أمنية حالية مخالفة للواقع نستخدم could أو past simple.",
+      "uid": 122
+    },
+    {
+      "id": "new-g-9", "section": "grammar", "topic": "conditional type 3",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "If she ______ harder, she would have passed the exam.",
+      "options": ["studied","had studied","has studied","studies"],
+      "answer": 1,
+      "explanation": "في الجملة الشرطية من النوع الثالث: if + had + past participle.",
+      "uid": 123
+    },
+    {
+      "id": "new-g-10", "section": "grammar", "topic": "reported speech",
+      "source": "الامتحان الوطني — قواعد",
+      "prompt": "She said, \"I am tired.\"",
+      "question": "She said that she ______ tired.",
+      "options": ["is","was","has been","will be"],
+      "answer": 1,
+      "explanation": "في الخطاب غير المباشر نغير المضارع البسيط إلى الماضي البسيط.",
+      "uid": 124
+    },
+    {
+      "id": "new-g-11", "section": "grammar", "topic": "preposition — adjective",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "He is very good ______ playing chess.",
+      "options": ["in","on","at","for"],
+      "answer": 2,
+      "explanation": "good at + gerund: جيد في...",
+      "uid": 125
+    },
+    {
+      "id": "new-g-12", "section": "grammar", "topic": "article — the",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "______ Nile is the longest river in Africa.",
+      "options": ["A","An","The","—"],
+      "answer": 2,
+      "explanation": "نستخدم the مع أسماء الأنهار والجبال والمحيطات.",
+      "uid": 126
+    },
+    {
+      "id": "new-g-13", "section": "grammar", "topic": "question tag",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "She is a doctor, ______?",
+      "options": ["isn't she","is she","wasn't she","does she"],
+      "answer": 0,
+      "explanation": "إذا كانت الجملة مثبتة نستخدم ذيلاً منفياً: isn't she.",
+      "uid": 127
+    },
+    {
+      "id": "new-g-14", "section": "grammar", "topic": "conditional type 1",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "If it rains tomorrow, we ______ the match.",
+      "options": ["cancel","will cancel","would cancel","cancelled"],
+      "answer": 1,
+      "explanation": "الجملة الشرطية من النوع الأول: if + present simple, will + base verb.",
+      "uid": 128
+    },
+    {
+      "id": "new-g-15", "section": "grammar", "topic": "passive — past simple",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "The novel ______ by Charles Dickens.",
+      "options": ["wrote","is written","was written","writes"],
+      "answer": 2,
+      "explanation": "المبني للمجهول في الماضي البسيط: was/were + past participle.",
+      "uid": 129
+    },
+    {
+      "id": "new-g-16", "section": "grammar", "topic": "preposition of time",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "The exam starts ______ 8 o'clock in the morning.",
+      "options": ["in","on","at","by"],
+      "answer": 2,
+      "explanation": "at + وقت محدد (ساعة).",
+      "uid": 130
+    },
+    {
+      "id": "new-g-17", "section": "grammar", "topic": "modal — advice",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "You look pale. You ______ see a doctor.",
+      "options": ["must","should","might","can"],
+      "answer": 1,
+      "explanation": "should يعبر عن النصيحة.",
+      "uid": 131
+    },
+    {
+      "id": "new-g-18", "section": "grammar", "topic": "present perfect continuous",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "She ______ for the exam all week.",
+      "options": ["is studying","was studying","has been studying","had been studying"],
+      "answer": 2,
+      "explanation": "المضارع التام المستمر (has/have been + V-ing) للفعل المستمر من الماضي حتى الحاضر.",
+      "uid": 132
+    },
+    {
+      "id": "new-g-19", "section": "grammar", "topic": "neither…nor",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "______ Ali nor his brother was at the meeting.",
+      "options": ["Both","Either","Neither","Not only"],
+      "answer": 2,
+      "explanation": "Neither...nor = لا...ولا (للنفي المزدوج).",
+      "uid": 133
+    },
+    {
+      "id": "new-g-20", "section": "grammar", "topic": "indirect question",
+      "source": "الامتحان الوطني — قواعد",
+      "prompt": "He asked me, \"Where do you live?\"",
+      "question": "He asked me where ______.",
+      "options": ["do I live","I live","I lived","did I live"],
+      "answer": 2,
+      "explanation": "في السؤال غير المباشر نستخدم ترتيب الجملة الخبرية ونغير الزمن للماضي.",
+      "uid": 134
+    },
+    {
+      "id": "new-g-21", "section": "grammar", "topic": "comparative — long adjective",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "This exercise is ______ than the previous one.",
+      "options": ["more difficult","difficulter","most difficult","the most difficult"],
+      "answer": 0,
+      "explanation": "الصفات الطويلة (أكثر من مقطعين): more + adjective في التفضيل المقارن.",
+      "uid": 135
+    },
+    {
+      "id": "new-g-22", "section": "grammar", "topic": "despite vs although",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "______ being tired, she finished her work.",
+      "options": ["Although","Despite","Because","Since"],
+      "answer": 1,
+      "explanation": "Despite + noun/gerund (بدون فعل)، بينما although + clause كاملة.",
+      "uid": 136
+    },
+    {
+      "id": "new-g-23", "section": "grammar", "topic": "future perfect",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "By next year, she ______ her university degree.",
+      "options": ["will finish","will have finished","is finishing","has finished"],
+      "answer": 1,
+      "explanation": "المستقبل التام (will have + past participle) لحدث سيكتمل قبل وقت محدد في المستقبل.",
+      "uid": 137
+    },
+    {
+      "id": "new-g-24", "section": "grammar", "topic": "passive — present continuous",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "The road ______ at the moment.",
+      "options": ["is being repaired","repairs","is repairing","was repaired"],
+      "answer": 0,
+      "explanation": "المبني للمجهول في المضارع المستمر: is/am/are + being + past participle.",
+      "uid": 138
+    },
+    {
+      "id": "new-g-25", "section": "grammar", "topic": "relative pronoun — whose",
+      "source": "الامتحان الوطني — قواعد", "prompt": "",
+      "question": "This is the student ______ father is a famous doctor.",
+      "options": ["who","which","whose","whom"],
+      "answer": 2,
+      "explanation": "whose = الذي/التي + ضمير ملكية: تُستخدم للدلالة على الملكية.",
+      "uid": 139
+    },
+
+    /* ═══════════════════════════════════════════
+       Functions — وظائف اللغة (20 أسئلة جديدة)
+    ═══════════════════════════════════════════ */
+    {
+      "id": "new-f-1", "section": "function", "topic": "making a request",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "A friend says: \"Would you mind closing the window?\"",
+      "question": "What language function does this sentence express?",
+      "options": ["Making an offer","Making a request","Giving advice","Expressing an opinion"],
+      "answer": 1,
+      "explanation": "\"Would you mind...?\" تستخدم لتقديم طلب بأسلوب مهذب.",
+      "uid": 140
+    },
+    {
+      "id": "new-f-2", "section": "function", "topic": "making a suggestion",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "Someone says: \"Why don't we go for a walk?\"",
+      "question": "What is the speaker doing?",
+      "options": ["Refusing","Complaining","Making a suggestion","Asking for information"],
+      "answer": 2,
+      "explanation": "\"Why don't we...?\" تستخدم لتقديم اقتراح.",
+      "uid": 141
+    },
+    {
+      "id": "new-f-3", "section": "function", "topic": "making an offer",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"Shall I carry that heavy bag for you?\"",
+      "question": "What is the speaker doing?",
+      "options": ["Asking permission","Making an offer","Giving advice","Making a request"],
+      "answer": 1,
+      "explanation": "\"Shall I...?\" تستخدم لتقديم عرض مساعدة.",
+      "uid": 142
+    },
+    {
+      "id": "new-f-4", "section": "function", "topic": "apologizing",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"I'm terribly sorry for being late. I missed the bus.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Apologizing","Explaining","Complaining","Refusing"],
+      "answer": 0,
+      "explanation": "\"I'm sorry for...\" تستخدم للاعتذار.",
+      "uid": 143
+    },
+    {
+      "id": "new-f-5", "section": "function", "topic": "congratulating",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "A: \"I've just passed my driving test!\"",
+      "question": "Which response is most appropriate?",
+      "options": ["Good luck!","Never mind!","Congratulations!","I'm sorry to hear that!"],
+      "answer": 2,
+      "explanation": "Congratulations! تستخدم للتهنئة بالنجاح والإنجازات.",
+      "uid": 144
+    },
+    {
+      "id": "new-f-6", "section": "function", "topic": "giving advice",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"If I were you, I would take more exercise.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Making a suggestion","Giving advice","Making a request","Expressing ability"],
+      "answer": 1,
+      "explanation": "\"If I were you, I would...\" تعبير اصطلاحي يُستخدم لإعطاء نصيحة.",
+      "uid": 145
+    },
+    {
+      "id": "new-f-7", "section": "function", "topic": "making a suggestion",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"How about visiting the museum this afternoon?\"",
+      "question": "What is the speaker doing?",
+      "options": ["Refusing an invitation","Making a suggestion","Asking for permission","Expressing surprise"],
+      "answer": 1,
+      "explanation": "\"How about + gerund?\" تستخدم لتقديم اقتراح.",
+      "uid": 146
+    },
+    {
+      "id": "new-f-8", "section": "function", "topic": "asking permission",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"May I use your dictionary, please?\"",
+      "question": "What function does this sentence express?",
+      "options": ["Giving advice","Making an offer","Asking for permission","Expressing opinion"],
+      "answer": 2,
+      "explanation": "\"May I...?\" تستخدم لطلب الإذن.",
+      "uid": 147
+    },
+    {
+      "id": "new-f-9", "section": "function", "topic": "inviting",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"Would you like to join us for dinner?\"",
+      "question": "What is the speaker doing?",
+      "options": ["Giving an order","Inviting someone","Refusing","Complaining"],
+      "answer": 1,
+      "explanation": "\"Would you like to...?\" تستخدم للدعوة.",
+      "uid": 148
+    },
+    {
+      "id": "new-f-10", "section": "function", "topic": "expressing opinion",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"In my opinion, we should invest more in education.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Giving instructions","Expressing an opinion","Making a request","Apologizing"],
+      "answer": 1,
+      "explanation": "\"In my opinion...\" تستخدم للتعبير عن الرأي الشخصي.",
+      "uid": 149
+    },
+    {
+      "id": "new-f-11", "section": "function", "topic": "giving advice — had better",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"You'd better take an umbrella. It might rain.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Making a prediction","Expressing certainty","Giving advice","Making a request"],
+      "answer": 2,
+      "explanation": "\"You'd better...\" تعبير اصطلاحي للنصيحة.",
+      "uid": 150
+    },
+    {
+      "id": "new-f-12", "section": "function", "topic": "declining an invitation",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"I'm afraid I can't come to your party.\"",
+      "question": "What is the speaker doing?",
+      "options": ["Accepting an invitation","Declining an invitation","Making a suggestion","Asking for information"],
+      "answer": 1,
+      "explanation": "\"I'm afraid I can't...\" تستخدم لرفض دعوة بأدب.",
+      "uid": 151
+    },
+    {
+      "id": "new-f-13", "section": "function", "topic": "offering help",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"Let me know if you need any help.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Giving an order","Making a threat","Offering help","Asking for advice"],
+      "answer": 2,
+      "explanation": "\"Let me know if...\" تستخدم لعرض المساعدة.",
+      "uid": 152
+    },
+    {
+      "id": "new-f-14", "section": "function", "topic": "expressing admiration",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"What a wonderful performance!\"",
+      "question": "What function does this sentence express?",
+      "options": ["Asking a question","Expressing admiration","Complaining","Giving advice"],
+      "answer": 1,
+      "explanation": "\"What a + adjective + noun!\" تستخدم للتعبير عن الإعجاب.",
+      "uid": 153
+    },
+    {
+      "id": "new-f-15", "section": "function", "topic": "polite request",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"Could you possibly speak more slowly, please?\"",
+      "question": "What is the speaker doing?",
+      "options": ["Making an offer","Giving advice","Expressing an opinion","Making a polite request"],
+      "answer": 3,
+      "explanation": "\"Could you possibly...?\" صيغة مهذبة جداً لتقديم طلب.",
+      "uid": 154
+    },
+    {
+      "id": "new-f-16", "section": "function", "topic": "reassuring",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"Don't worry! I'm sure everything will be fine.\"",
+      "question": "What is the speaker doing?",
+      "options": ["Warning","Reassuring someone","Apologizing","Inviting"],
+      "answer": 1,
+      "explanation": "\"Don't worry! I'm sure...\" تستخدم لطمأنة شخص.",
+      "uid": 155
+    },
+    {
+      "id": "new-f-17", "section": "function", "topic": "expressing gratitude",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"I'd like to thank you for all your help.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Apologizing","Asking for help","Expressing gratitude","Complaining"],
+      "answer": 2,
+      "explanation": "\"I'd like to thank you for...\" تستخدم للتعبير عن الامتنان والشكر.",
+      "uid": 156
+    },
+    {
+      "id": "new-f-18", "section": "function", "topic": "expressing disbelief",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"You must be joking! That can't be true.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Expressing disbelief","Giving advice","Making a suggestion","Apologizing"],
+      "answer": 0,
+      "explanation": "\"You must be joking!\" تستخدم للتعبير عن الاستغراب وعدم التصديق.",
+      "uid": 157
+    },
+    {
+      "id": "new-f-19", "section": "function", "topic": "expressing interest",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"I'm really interested in learning more about this topic.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Expressing boredom","Expressing interest","Complaining","Refusing"],
+      "answer": 1,
+      "explanation": "\"I'm interested in...\" تستخدم للتعبير عن الاهتمام.",
+      "uid": 158
+    },
+    {
+      "id": "new-f-20", "section": "function", "topic": "making a suggestion — let's",
+      "source": "الامتحان الوطني — وظائف اللغة",
+      "prompt": "\"Let's go to the library and study together.\"",
+      "question": "What function does this sentence express?",
+      "options": ["Making an order","Giving advice","Making a suggestion","Asking permission"],
+      "answer": 2,
+      "explanation": "\"Let's + base verb\" تستخدم لتقديم اقتراح مشترك.",
+      "uid": 159
+    },
+
+    /* ═══════════════════════════════════════════
+       Conversations — محادثات (15 أسئلة جديدة)
+    ═══════════════════════════════════════════ */
+    {
+      "id": "new-c-1", "section": "conversation", "topic": "congratulating — response",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Congratulations! You've won first prize!\"",
+      "question": "What is the most appropriate response for B?",
+      "options": ["I'm sorry to hear that.","Thank you very much! That's wonderful!","Never mind!","I don't think so."],
+      "answer": 1,
+      "explanation": "الرد على التهنئة يكون بالشكر: Thank you very much!",
+      "uid": 160
+    },
+    {
+      "id": "new-c-2", "section": "conversation", "topic": "formal greeting",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"How do you do?\"",
+      "question": "What is the correct formal response?",
+      "options": ["I'm fine, thanks.","How do you do?","Nice to meet you, too.","I do well."],
+      "answer": 1,
+      "explanation": "\"How do you do?\" تحية رسمية والرد الصحيح عليها: \"How do you do?\" — ليس وصفاً للصحة.",
+      "uid": 161
+    },
+    {
+      "id": "new-c-3", "section": "conversation", "topic": "refusing politely",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Would you like some more coffee?\"",
+      "question": "Which is the most polite way to refuse?",
+      "options": ["No!","I don't want it.","No, thank you. I've had enough.","Stop asking me."],
+      "answer": 2,
+      "explanation": "الرفض المهذب يكون: \"No, thank you.\" أو \"No, thanks.\"",
+      "uid": 162
+    },
+    {
+      "id": "new-c-4", "section": "conversation", "topic": "accepting apology",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"I'm sorry I'm late.\"",
+      "question": "What is the most appropriate response?",
+      "options": ["You're always late!","Never mind. It's okay.","I hate waiting!","You should apologize!"],
+      "answer": 1,
+      "explanation": "الرد المهذب على الاعتذار: \"Never mind.\" أو \"That's alright.\"",
+      "uid": 163
+    },
+    {
+      "id": "new-c-5", "section": "conversation", "topic": "wishing farewell",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Have a safe journey!\"",
+      "question": "What is the most natural reply?",
+      "options": ["I'm scared.","See you tomorrow.","Thank you! Same to you.","I don't want to go."],
+      "answer": 2,
+      "explanation": "الرد على التمنيات: \"Thank you! Same to you.\" أو \"Thank you! I will.\"",
+      "uid": 164
+    },
+    {
+      "id": "new-c-6", "section": "conversation", "topic": "offering help — accepting",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Could you give me a hand with these boxes?\"",
+      "question": "Which response shows willingness to help?",
+      "options": ["I'm busy.","Of course! I'd be happy to help.","Why me?","Ask someone else."],
+      "answer": 1,
+      "explanation": "قبول طلب المساعدة: \"Of course! I'd be happy to help.\"",
+      "uid": 165
+    },
+    {
+      "id": "new-c-7", "section": "conversation", "topic": "responding to bad news",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"I've lost my wallet!\"",
+      "question": "What is the most helpful and sympathetic response?",
+      "options": ["That's your problem.","Don't worry about it.","Oh no! Have you checked your pockets?","I knew it!"],
+      "answer": 2,
+      "explanation": "الرد المتعاطف المفيد: إظهار القلق وتقديم اقتراح عملي.",
+      "uid": 166
+    },
+    {
+      "id": "new-c-8", "section": "conversation", "topic": "expressing opinion",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"What do you think of the new school library?\"",
+      "question": "Which response best expresses an opinion?",
+      "options": ["I don't know.","In my opinion, it's very well-organized and useful.","Maybe.","Not sure."],
+      "answer": 1,
+      "explanation": "\"In my opinion...\" هو أسلوب التعبير الصحيح عن الرأي.",
+      "uid": 167
+    },
+    {
+      "id": "new-c-9", "section": "conversation", "topic": "suggesting alternative time",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Shall we meet at six?\"",
+      "question": "Which best shows polite negotiation of the time?",
+      "options": ["Six is fine but I disagree.","Six is fine but could we make it seven instead?","I hate six o'clock.","I won't come."],
+      "answer": 1,
+      "explanation": "الرد المهذب عند اقتراح وقت بديل.",
+      "uid": 168
+    },
+    {
+      "id": "new-c-10", "section": "conversation", "topic": "accepting invitation enthusiastically",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Are you interested in coming to our English club?\"",
+      "question": "Which response shows enthusiasm?",
+      "options": ["Maybe, if I have to.","I suppose.","That sounds great! I'd love to.","I'll think about it."],
+      "answer": 2,
+      "explanation": "\"That sounds great! I'd love to.\" تعبر عن حماس وقبول الدعوة.",
+      "uid": 169
+    },
+    {
+      "id": "new-c-11", "section": "conversation", "topic": "asking for directions",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Excuse me. How do I get to the nearest bank?\"",
+      "question": "Which response is most helpful?",
+      "options": ["I'm busy.","I don't know you.","Go straight ahead and turn left at the traffic lights.","Why do you need a bank?"],
+      "answer": 2,
+      "explanation": "إعطاء الاتجاهات يكون بذكر الطريق بوضوح.",
+      "uid": 170
+    },
+    {
+      "id": "new-c-12", "section": "conversation", "topic": "responding to illness — advice",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"I don't feel well. I have a headache.\"",
+      "question": "What is the most sympathetic and helpful response?",
+      "options": ["Good.","That's normal.","You should take some aspirin and get some rest.","I feel well."],
+      "answer": 2,
+      "explanation": "الرد المتعاطف مع تقديم نصيحة مفيدة.",
+      "uid": 171
+    },
+    {
+      "id": "new-c-13", "section": "conversation", "topic": "declining politely with reason",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Let's go swimming this afternoon.\" B: \"I'm afraid ______.\"",
+      "question": "How does B politely decline?",
+      "options": ["I can't. I have to study for tomorrow's exam.","swimming is boring.","I hate you.","No way."],
+      "answer": 0,
+      "explanation": "\"I'm afraid I can't because...\" رفض مهذب مع تقديم السبب.",
+      "uid": 172
+    },
+    {
+      "id": "new-c-14", "section": "conversation", "topic": "phone — person unavailable",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"Can I speak to Dr. Ahmed, please?\"",
+      "question": "Which is the most appropriate reply when the person is not available?",
+      "options": ["He doesn't want to talk.","I'm sorry, he's not available at the moment. Can I take a message?","Call later.","Who are you?"],
+      "answer": 1,
+      "explanation": "الرد المهذب عند غياب الشخص المطلوب في المكالمة الهاتفية.",
+      "uid": 173
+    },
+    {
+      "id": "new-c-15", "section": "conversation", "topic": "responding to good news",
+      "source": "الامتحان الوطني — محادثات",
+      "prompt": "A: \"I've just got a new job!\"",
+      "question": "What is the most appropriate response?",
+      "options": ["Oh dear!","I'm sorry.","That's fantastic news! Well done!","Never mind."],
+      "answer": 2,
+      "explanation": "الرد على الخبر السار: \"That's fantastic!\" أو \"Congratulations!\"",
+      "uid": 174
     }
   ],
   "passages": [
