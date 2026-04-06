@@ -21,12 +21,14 @@
     .concat(APP_DATA.passages || []);
 
   const SEC = {
-    all:          "كل الأقسام",
+    all:          "شامل (Grammar + Functions + Conversations)",
     grammar:      "Grammar — القواعد",
-    conversation: "Conversations — المحادثات",
     function:     "Functions — وظائف اللغة",
-    reading:      "Reading — القطعة",
+    conversation: "Conversations — المحادثات",
   };
+
+  /* أقسام الامتحان فقط — القطعة مستبعدة من الشاملة */
+  const EXAM_SECTIONS = ["all", "grammar", "function", "conversation"];
 
   const STORE = "warith_v3";
 
@@ -61,8 +63,10 @@
 
   function buildExamSectionOptions() {
     const sel = $("#examSection");
-    sel.innerHTML = Object.entries(SEC)
-      .map(([v,l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("");
+    sel.innerHTML = EXAM_SECTIONS
+      .map(function (v) {
+        return `<option value="${esc(v)}">${esc(SEC[v] || v)}</option>`;
+      }).join("");
   }
 
   /* ترتيب الأقسام */
@@ -73,7 +77,9 @@
     const count   = parseInt($("#examCount").value, 10);
     const mins    = parseInt($("#examMinutes").value, 10);
 
+    /* "all" = grammar + function + conversation فقط — بدون reading */
     const pool = QS.filter(function (q) {
+      if (q.section === "reading") return false;
       return (section === "all" || q.section === section) && q.options?.length >= 2;
     });
 
@@ -200,10 +206,10 @@
       <div class="stack">
         ${review.map(function (q, i) {
           return `
-          <article class="qcard">
+          <article class="qcard ${q.ok ? "qcard-ok" : "qcard-err"}">
             <div class="meta">
               <span class="badge num">${i+1}</span>
-              <span class="badge ${q.ok ? "" : "grey"}">${q.ok ? "✓ صحيحة" : "✗ خاطئة"}</span>
+              <span class="badge ${q.ok ? "badge-ok" : "badge-err"}">${q.ok ? "✓ صحيحة" : "✗ خاطئة"}</span>
               <span class="badge grey">${esc(SEC[q.section]||q.section)}</span>
             </div>
             ${q.prompt ? `<div class="prompt">${esc(q.prompt)}</div>` : ""}
@@ -219,8 +225,16 @@
                 </div>`;
               }).join("")}
             </div>
-            <div class="answer-box show"><strong>الجواب الصحيح:</strong> ${esc(q.options[q.answer]??'')}</div>
-            <div class="explain-box show"><strong>السبب:</strong> ${esc(q.explanation||'راجع الفكرة الأساسية.')}</div>
+            ${!q.ok ? `
+              <div class="wrong-detail">
+                ${q.chosen >= 0
+                  ? `<div class="chosen-row">❌ اخترت: <strong>${esc(q.options[q.chosen])}</strong></div>`
+                  : `<div class="chosen-row">⚠️ لم تختر إجابة</div>`
+                }
+                <div class="answer-box show">✅ الجواب الصحيح: <strong>${esc(q.options[q.answer]??'')}</strong></div>
+                <div class="explain-box show">💡 <strong>الشرح:</strong> ${esc(q.explanation||'راجع الفكرة الأساسية.')}</div>
+              </div>
+            ` : `<div class="correct-row">✅ أحسنت! إجابتك صحيحة.</div>`}
           </article>`;
         }).join("")}
       </div>
