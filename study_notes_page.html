@@ -3,13 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ملخص قواعد اللغة الإنكليزية ووظائف اللغة وملاحظات المحادثة للمراجعة السريعة.">
+  <meta name="description" content="ورقة المراجعة السريعة — الأزمنة، القواعد، الوظائف، القطعة | Warith">
   <meta name="theme-color" content="#0d9488">
-  <title>ملخص المراجعة — قواعد + وظائف + محادثة | Warith</title>
+  <title>ورقة المراجعة السريعة | Warith</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/study-notes.css">
+  <style>
+    /* ── جدول الأزمنة ── */
+    .tenses-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      font-size: .93rem;
+    }
+    .tenses-table th,
+    .tenses-table td {
+      border: 1px solid var(--border);
+      padding: 7px 10px;
+      text-align: center;
+    }
+    .tenses-table th {
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+    .tenses-table tr:nth-child(even) td { background: #f9fffe }
+    .tenses-table td:first-child { font-weight: 700; color: var(--primary-dark) }
+
+    /* ── بطاقة القاعدة ── */
+    .rule-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 6px 0;
+    }
+    .rule-label {
+      font-weight: 800;
+      color: var(--primary-dark);
+      min-width: 90px;
+    }
+    .rule-en {
+      font-family: "Courier New", monospace;
+      font-size: .9rem;
+      background: #f0fdfa;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 8px;
+      color: #1a3a38;
+    }
+    .rule-ar {
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    /* ── بطاقة الوظيفة ── */
+    .func-card { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; background: var(--card) }
+    .func-title { font-weight: 800; color: var(--primary-dark); margin-bottom: 6px; font-size: 1rem }
+    .func-en { font-style: italic; color: #1e3a38; font-size: .93rem; line-height: 1.7 }
+    .func-ar { font-size: .86rem; color: var(--muted); margin-top: 4px }
+
+    /* ── نصائح القطعة ── */
+    .tip-list { list-style: none; padding: 0 }
+    .tip-list li {
+      padding: 8px 12px;
+      border-right: 4px solid var(--primary-2);
+      background: #f0fdfa;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .94rem;
+    }
+
+    /* ── قاعدة سريعة ── */
+    .quick-list { list-style: none; padding: 0 }
+    .quick-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      background: #fff8ec;
+      border: 1px solid #f3d7a2;
+      font-size: .93rem;
+    }
+    .quick-list li::before {
+      content: "⚡";
+      flex-shrink: 0;
+    }
+
+    /* ── مصطلح V ── */
+    .v-note {
+      background: var(--primary-soft);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: .88rem;
+      color: var(--primary-dark);
+      margin-top: 8px;
+    }
+
+    /* ── شبكة الوظائف ── */
+    .func-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+  </style>
 </head>
 <body>
 
@@ -25,276 +126,453 @@
 
   <main class="container">
     <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">ملخص احترافي: قواعد + وظائف اللغة + المحادثة</h1>
-      <p>صفحة دراسية مرتبة للمراجعة السريعة، مع أمثلة عملية وجمل جاهزة للاستخدام.</p>
+      <h1 id="hero-title">ورقة المراجعة السريعة — English Exam</h1>
+      <p>كل القواعد الأساسية في مكان واحد — الأزمنة · القواعد · الوظائف · نصائح القطعة</p>
     </section>
 
-    <div class="tabs" role="tablist" aria-label="أقسام الملخص">
-      <button type="button" class="tab-btn active" data-tab="grammar"
-              role="tab" aria-selected="true"  id="tab-grammar">
-        قواعد اللغة
+    <div class="tabs" role="tablist" aria-label="أقسام المراجعة">
+      <button type="button" class="tab-btn active" data-tab="tenses"
+              role="tab" aria-selected="true" id="tab-tenses">
+        الأزمنة
+      </button>
+      <button type="button" class="tab-btn" data-tab="rules"
+              role="tab" aria-selected="false" id="tab-rules">
+        القواعد العامة
       </button>
       <button type="button" class="tab-btn" data-tab="functions"
               role="tab" aria-selected="false" id="tab-functions">
         وظائف اللغة
       </button>
-      <button type="button" class="tab-btn" data-tab="conversation"
-              role="tab" aria-selected="false" id="tab-conversation">
-        ملاحظات المحادثة
+      <button type="button" class="tab-btn" data-tab="reading"
+              role="tab" aria-selected="false" id="tab-reading">
+        القطعة والقواعد السريعة
       </button>
     </div>
 
-    <!-- ── قواعد اللغة ──────────────────────────── -->
-    <section id="grammar" class="panel active"
-             role="tabpanel" aria-labelledby="tab-grammar">
-      <h2>أهم القواعد بشكل مبسط</h2>
+    <!-- ══ الأزمنة ══════════════════════════════════ -->
+    <section id="tenses" class="panel active"
+             role="tabpanel" aria-labelledby="tab-tenses">
+      <h2>TENSES — جدول الأزمنة الكامل</h2>
+
+      <table class="tenses-table">
+        <thead>
+          <tr>
+            <th>النوع / Type</th>
+            <th>Present — الحاضر</th>
+            <th>Past — الماضي</th>
+            <th>Future — المستقبل</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Simple — البسيط</td>
+            <td>I + V1 (s/es مع he/she/it)</td>
+            <td>I + V2</td>
+            <td>I + will + V1</td>
+          </tr>
+          <tr>
+            <td>Continuous — المستمر</td>
+            <td>I + am/is/are + V-ing</td>
+            <td>I + was/were + V-ing</td>
+            <td>I + will be + V-ing</td>
+          </tr>
+          <tr>
+            <td>Perfect — التام</td>
+            <td>I + have/has + V3</td>
+            <td>I + had + V3</td>
+            <td>I + will have + V3</td>
+          </tr>
+          <tr>
+            <td>Perfect Cont. — التام المستمر</td>
+            <td>I + have/has been + V-ing</td>
+            <td>I + had been + V-ing</td>
+            <td>I + will have been + V-ing</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="v-note">
+        <strong>V1</strong> = الفعل الأساسي (base) &nbsp;|&nbsp;
+        <strong>V2</strong> = الفعل الماضي (past) &nbsp;|&nbsp;
+        <strong>V3</strong> = التصريف الثالث (past participle) &nbsp;|&nbsp;
+        <strong>V-ing</strong> = الفعل المضاف إليه -ing
+      </div>
+
+      <div class="grid" style="margin-top:16px">
+
+        <article class="card">
+          <h3>كلمات دالة على الأزمنة</h3>
+          <ul>
+            <li><strong>Present Simple:</strong> always, usually, every day, often</li>
+            <li><strong>Past Simple:</strong> yesterday, ago, last year, in 2010</li>
+            <li><strong>Present Continuous:</strong> now, at the moment, currently</li>
+            <li><strong>Present Perfect:</strong> just, already, yet, ever, never, since, for</li>
+            <li><strong>Future:</strong> tomorrow, next week, soon</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>قواعد سريعة للأزمنة</h3>
+          <ul>
+            <li>بعد <strong>will / modal</strong> → V1 مباشرة</li>
+            <li>بعد <strong>did</strong> → V1 مباشرة</li>
+            <li>بعد <strong>am / is / are</strong> → V-ing</li>
+            <li>بعد <strong>have / has</strong> → V3</li>
+            <li>بعد <strong>since / for</strong> → Present Perfect</li>
+            <li>He/She/It في Present Simple → V1 + <strong>s</strong></li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══ القواعد العامة ════════════════════════════ -->
+    <section id="rules" class="panel"
+             role="tabpanel" aria-labelledby="tab-rules">
+      <h2>القواعد العامة الأساسية</h2>
       <div class="grid">
 
+        <!-- IF Condition -->
         <article class="card">
-          <h3>1) الأزمنة الأساسية</h3>
-          <ul>
-            <li><strong>Present Simple:</strong> حقائق وعادات متكررة.</li>
-            <li><strong>Past Simple:</strong> حدث انتهى في الماضي.</li>
-            <li><strong>Future (will):</strong> قرار سريع أو توقع.</li>
-          </ul>
-          <div class="example">
-            I study every day. / I studied yesterday. / I will study tonight.
+          <h3>IF — الجملة الشرطية</h3>
+          <div class="rule-row">
+            <span class="rule-label">Type 1</span>
+            <span class="rule-en">If + present → will + V1</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:8px">مستقبل محتمل — If it rains, I will stay home.</div>
+          <div class="rule-row">
+            <span class="rule-label">Type 2</span>
+            <span class="rule-en">If + past → would + V1</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px">خيالي/غير واقعي — If I were rich, I would travel.</div>
+        </article>
+
+        <!-- Wish -->
+        <article class="card">
+          <h3>Wish — أتمنى</h3>
+          <div class="rule-row">
+            <span class="rule-label">القاعدة</span>
+            <span class="rule-en">wish + past simple</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:8px">لتمنّي عكس الواقع — I wish I had a car.</div>
+          <div class="rule-row">
+            <span class="rule-label">تنبيه</span>
+            <span class="rule-en">wish + were (ليس was)</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px">She wishes she were taller.</div>
+        </article>
+
+        <!-- Linking -->
+        <article class="card">
+          <h3>LINKING — أدوات الربط</h3>
+          <div class="rule-row">
+            <span class="rule-label">because</span>
+            <span class="rule-en">سبب</span>
+            <span class="rule-ar">I stayed home because it rained.</span>
+          </div>
+          <div class="rule-row">
+            <span class="rule-label">so</span>
+            <span class="rule-en">نتيجة</span>
+            <span class="rule-ar">It rained, so I stayed home.</span>
+          </div>
+          <div class="rule-row">
+            <span class="rule-label">but</span>
+            <span class="rule-en">تضاد</span>
+            <span class="rule-ar">I studied, but I failed.</span>
+          </div>
+          <div class="rule-row">
+            <span class="rule-label">although</span>
+            <span class="rule-en">رغم</span>
+            <span class="rule-ar">Although it rained, I went out.</span>
           </div>
         </article>
 
+        <!-- So / Such -->
         <article class="card">
-          <h3>2) المضارع المستمر</h3>
-          <ul>
-            <li>الصيغة: <strong>am / is / are + verb-ing</strong></li>
-            <li>يستخدم لما يحدث الآن أو في وقت التحدث.</li>
-          </ul>
-          <div class="example">
-            She is reading now. / They are playing football.
+          <h3>SO / SUCH</h3>
+          <div class="rule-row">
+            <span class="rule-label">so</span>
+            <span class="rule-en">so + adj/adv</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:8px">It was so cold. / He ran so fast.</div>
+          <div class="rule-row">
+            <span class="rule-label">such</span>
+            <span class="rule-en">such + (a/an) + adj + noun</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px">It was such a cold day. / They are such kind people.</div>
+          <div class="example" style="margin-top:10px">
+            <strong>الفرق:</strong> so تليها صفة فقط — such تليها صفة + اسم
           </div>
         </article>
 
+        <!-- Since / For -->
         <article class="card">
-          <h3>3) أدوات السؤال</h3>
-          <ul>
-            <li>What, Where, When, Why, Who, How</li>
-            <li>للماضي: <strong>did + base verb</strong></li>
-            <li>للحاضر: <strong>do / does + base verb</strong></li>
-          </ul>
-          <div class="example">
-            Where did you go yesterday? / When does she arrive?
+          <h3>SINCE / FOR + Present Perfect</h3>
+          <div class="rule-row">
+            <span class="rule-label">since</span>
+            <span class="rule-en">بداية الوقت</span>
           </div>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:8px">I have lived here since 2010. (منذ عام ٢٠١٠)</div>
+          <div class="rule-row">
+            <span class="rule-label">for</span>
+            <span class="rule-en">مدة زمنية</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px">I have lived here for 5 years. (منذ ٥ سنوات)</div>
         </article>
 
+        <!-- Prepositions -->
         <article class="card">
-          <h3>4) المقارنة</h3>
-          <ul>
-            <li>صفة قصيرة: <strong>adj + er + than</strong></li>
-            <li>صفة طويلة: <strong>more + adj + than</strong></li>
-            <li>التفضيل: <strong>the + adj + est</strong></li>
-          </ul>
-          <div class="example">
-            Ali is taller than Omar. / This is the most important lesson.
+          <h3>PREPOSITIONS — حروف الجر</h3>
+          <div class="rule-row">
+            <span class="rule-label">at</span>
+            <span class="rule-en">وقت / مكان محدد</span>
           </div>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:6px">at 8 o'clock / at home / at night</div>
+          <div class="rule-row">
+            <span class="rule-label">on</span>
+            <span class="rule-en">يوم / سطح</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:6px">on Monday / on the table / on TV</div>
+          <div class="rule-row">
+            <span class="rule-label">in</span>
+            <span class="rule-en">سنة / شهر / مكان</span>
+          </div>
+          <div class="rule-ar" style="margin-right:100px">in 2024 / in January / in Iraq</div>
         </article>
 
+        <!-- TO Infinitive -->
         <article class="card">
-          <h3>5) المبني للمجهول</h3>
-          <ul>
-            <li>الصيغة: <strong>be + past participle (V3)</strong></li>
-            <li>يُستخدم حين الفاعل مجهول أو غير مهم.</li>
-          </ul>
-          <div class="example">
-            The letter was written by Ali. / This bridge was built in 1990.
+          <h3>TO + Infinitive</h3>
+          <div class="rule-row">
+            <span class="rule-label">القاعدة</span>
+            <span class="rule-en">to + V1 (الفعل الأساسي)</span>
           </div>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:8px">I want <strong>to study</strong>. / She likes <strong>to read</strong>.</div>
+          <ul>
+            <li>بعد want / like / need / hope / plan → <strong>to + V1</strong></li>
+            <li>بعد should / can / must / will → <strong>V1</strong> بدون to</li>
+          </ul>
         </article>
 
+        <!-- Passive Voice -->
         <article class="card">
-          <h3>6) الشرط (If)</h3>
-          <ul>
-            <li><strong>If + present, will + base verb</strong> (مستقبلي محتمل)</li>
-            <li><strong>If + past, would + base verb</strong> (خيالي/غير واقعي)</li>
-          </ul>
-          <div class="example">
-            If it rains, I will stay home. / If I were rich, I would travel.
+          <h3>المبني للمجهول (Passive)</h3>
+          <div class="rule-row">
+            <span class="rule-label">الصيغة</span>
+            <span class="rule-en">be + V3</span>
           </div>
-        </article>
-
-        <article class="card">
-          <h3>7) Wish (أتمنى)</h3>
-          <ul>
-            <li>للتعبير عن أمنية مخالفة للواقع:</li>
-            <li><strong>wish + past simple</strong></li>
-            <li>مع they/I/we → <strong>were</strong> (ليس was)</li>
-          </ul>
+          <div class="rule-ar" style="margin-right:100px;margin-bottom:8px">يُستخدم حين الفاعل مجهول أو غير مهم</div>
           <div class="example">
-            I wish I had a car. / She wishes she were taller.
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>8) حروف الجر الشائعة</h3>
-          <ul>
-            <li><strong>interested in</strong> — مهتم بـ</li>
-            <li><strong>good at</strong> — ماهر في</li>
-            <li><strong>solution to</strong> — حل لـ</li>
-            <li><strong>depend on</strong> — يعتمد على</li>
-          </ul>
-          <div class="example">
-            She is good at maths. / What is the solution to this problem?
+            The letter <strong>was written</strong> by Ali.<br>
+            The bridge <strong>was built</strong> in 1990.<br>
+            English <strong>is spoken</strong> worldwide.
           </div>
         </article>
 
       </div>
     </section>
 
-    <!-- ── وظائف اللغة ───────────────────────────── -->
+    <!-- ══ وظائف اللغة ════════════════════════════ -->
     <section id="functions" class="panel"
              role="tabpanel" aria-labelledby="tab-functions">
-      <h2>وظائف اللغة (Language Functions)</h2>
-      <div class="grid">
+      <h2>FUNCTIONS — وظائف اللغة</h2>
+      <div class="func-grid">
 
-        <article class="card">
-          <h3>طلب المساعدة</h3>
-          <div class="example">
+        <div class="func-card">
+          <div class="func-title">🙋 Request — طلب مساعدة</div>
+          <div class="func-en">
+            Can you help me?<br>
             Could you help me, please?<br>
-            Can you explain this point?<br>
             Would you mind helping me?
           </div>
-        </article>
+          <div class="func-ar">هل يمكنك مساعدتي؟ / هل تمانع مساعدتي؟</div>
+        </div>
 
-        <article class="card">
-          <h3>إبداء الرأي</h3>
-          <div class="example">
-            I think this is a good idea.<br>
-            In my opinion, practice is important.<br>
-            I believe we should study daily.
+        <div class="func-card">
+          <div class="func-title">🤝 Offer — عرض مساعدة</div>
+          <div class="func-en">
+            I can help you.<br>
+            Shall I help you?<br>
+            Would you like me to help?
           </div>
-        </article>
+          <div class="func-ar">أستطيع مساعدتك. / هل تريد مساعدتي؟</div>
+        </div>
 
-        <article class="card">
-          <h3>الموافقة / عدم الموافقة</h3>
-          <div class="example">
-            I agree with you.<br>
-            That's right, exactly.<br>
-            I do not think so. / I disagree.
+        <div class="func-card">
+          <div class="func-title">💡 Suggestion — اقتراح</div>
+          <div class="func-en">
+            Why don't we study together?<br>
+            How about going to the library?<br>
+            Let's review the grammar.
           </div>
-        </article>
+          <div class="func-ar">لماذا لا ندرس معاً؟ / ما رأيك بـ...؟</div>
+        </div>
 
-        <article class="card">
-          <h3>النصيحة</h3>
-          <div class="example">
+        <div class="func-card">
+          <div class="func-title">📌 Advice — نصيحة</div>
+          <div class="func-en">
             You should revise every day.<br>
             You had better sleep early.<br>
             If I were you, I would ask the teacher.
           </div>
-        </article>
+          <div class="func-ar">ينبغي أن... / لو كنت مكانك...</div>
+        </div>
 
-        <article class="card">
-          <h3>الاقتراح</h3>
-          <div class="example">
-            Why don't we go to the library?<br>
-            How about studying together?<br>
-            Let's review the grammar rules.
+        <div class="func-card">
+          <div class="func-title">🚪 Permission — طلب إذن</div>
+          <div class="func-en">
+            Can I go out, please?<br>
+            May I use your pen?<br>
+            Is it OK if I sit here?
           </div>
-        </article>
+          <div class="func-ar">هل يمكنني...؟ / هل يسمح لي...؟</div>
+        </div>
 
-        <article class="card">
-          <h3>الاعتذار والرد</h3>
-          <div class="example">
+        <div class="func-card">
+          <div class="func-title">✅ Agreement — موافقة</div>
+          <div class="func-en">
+            Yes, of course.<br>
+            I agree with you.<br>
+            That's right, exactly.
+          </div>
+          <div class="func-ar">نعم بالطبع. / أوافقك الرأي. / صحيح تماماً.</div>
+        </div>
+
+        <div class="func-card">
+          <div class="func-title">❌ Refusal / Disagreement — رفض</div>
+          <div class="func-en">
+            Sorry, I can't.<br>
+            I'm afraid I disagree.<br>
+            I don't think so.
+          </div>
+          <div class="func-ar">آسف، لا أستطيع. / أخشى أنني لا أوافق.</div>
+        </div>
+
+        <div class="func-card">
+          <div class="func-title">🙏 Apology — اعتذار</div>
+          <div class="func-en">
             I'm sorry for being late.<br>
             I apologize for the mistake.<br>
             Never mind. / That's alright.
           </div>
-        </article>
+          <div class="func-ar">أنا آسف على... / لا بأس. / لا يهم.</div>
+        </div>
 
-        <article class="card">
-          <h3>التحذير</h3>
-          <div class="example">
+        <div class="func-card">
+          <div class="func-title">⚠️ Warning — تحذير</div>
+          <div class="func-en">
             Be careful! / Watch out!<br>
             Look out, there's a car!<br>
             You should be more careful.
           </div>
-        </article>
+          <div class="func-ar">كن حذراً! / انتبه! / توخَّ الحذر أكثر.</div>
+        </div>
 
-        <article class="card">
-          <h3>التهنئة</h3>
-          <div class="example">
+        <div class="func-card">
+          <div class="func-title">🎉 Congratulations — تهنئة</div>
+          <div class="func-en">
             Congratulations on your success!<br>
             Well done! / That's great news.<br>
             I'm so happy for you.
           </div>
-        </article>
+          <div class="func-ar">تهانيّ! / أحسنت! / أنا سعيد جداً لأجلك.</div>
+        </div>
+
+        <div class="func-card">
+          <div class="func-title">😢 Sympathy — تعاطف</div>
+          <div class="func-en">
+            I'm sorry to hear that.<br>
+            That's too bad.<br>
+            I hope you feel better soon.
+          </div>
+          <div class="func-ar">أتأسف لسماع ذلك. / هذا مؤسف. / أتمنى تحسّنك.</div>
+        </div>
+
+        <div class="func-card">
+          <div class="func-title">💬 Opinion — إبداء الرأي</div>
+          <div class="func-en">
+            I think / I believe ...<br>
+            In my opinion, ...<br>
+            As far as I know, ...
+          </div>
+          <div class="func-ar">أعتقد أن... / في رأيي... / فيما أعلم...</div>
+        </div>
 
       </div>
-      <div class="chips">
-        <span class="chip ok">نصيحة: احفظ الجمل كوحدات جاهزة، لا تترجم كلمة بكلمة</span>
-        <span class="chip warn">تنبيه: ركّز على الكلمة الدالّة في السؤال لتحديد الوظيفة</span>
+
+      <div class="chips" style="margin-top:16px">
+        <span class="chip ok">نصيحة: ركّز على الكلمة الدالّة في السؤال (should = نصيحة / can = إمكانية / congratulations = تهنئة)</span>
+        <span class="chip warn">تنبيه: احفظ الجمل كوحدات جاهزة، لا تترجم كلمة بكلمة</span>
       </div>
     </section>
 
-    <!-- ── المحادثة ──────────────────────────────── -->
-    <section id="conversation" class="panel"
-             role="tabpanel" aria-labelledby="tab-conversation">
-      <h2>ملاحظات المحادثة (Conversation Notes)</h2>
+    <!-- ══ القطعة والقواعد السريعة ════════════════════ -->
+    <section id="reading" class="panel"
+             role="tabpanel" aria-labelledby="tab-reading">
+      <h2>READING — نصائح القطعة والقواعد السريعة</h2>
       <div class="grid">
 
         <article class="card">
-          <h3>هيكل إجابة ممتازة</h3>
-          <ul>
-            <li>ابدأ بجملة مباشرة وواضحة.</li>
-            <li>أضف سببًا أو مثالًا قصيرًا.</li>
-            <li>اختم بجملة تؤكد فكرتك.</li>
-          </ul>
-          <div class="example">
-            I prefer studying in the morning because I can focus better, so I finish my tasks faster.
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>عبارات انتقال مهمة</h3>
-          <ul>
-            <li><strong>First / Firstly</strong> — أولاً</li>
-            <li><strong>Then / After that</strong> — ثم / بعد ذلك</li>
-            <li><strong>Also / In addition</strong> — أيضًا / علاوة على ذلك</li>
-            <li><strong>However</strong> — مع ذلك / لكن</li>
-            <li><strong>Finally</strong> — أخيرًا</li>
-          </ul>
-          <div class="example">
-            First, I study grammar. Then, I practise reading. Finally, I review my notes.
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>أخطاء شائعة يجب تجنبها</h3>
-          <ul>
-            <li>نسيان <strong>-s</strong> مع he/she في المضارع البسيط.</li>
-            <li>استخدام الفعل الماضي بعد <strong>did</strong> (خطأ: did went).</li>
-            <li>نسيان الفاعل في بداية الجملة.</li>
-            <li>الخلط بين <strong>do</strong> و <strong>make</strong>.</li>
+          <h3>📖 نصائح القطعة</h3>
+          <ul class="tip-list">
+            <li>اقرأ السؤال <strong>أولاً</strong> ثم القطعة لتعرف ما تبحث عنه</li>
+            <li>دوّر على نفس الكلمة في النص أو مرادفها — الجواب موجود في النص غالباً</li>
+            <li>لا تختار من فهمك العام فقط — استند إلى النص مباشرة</li>
+            <li>إذا سأل عن <strong>زمن</strong> → ابحث عن الكلمات الدالة (in, during, after, before)</li>
+            <li>إذا سأل عن <strong>مرجع ضمير</strong> → ارجع إلى الجملة السابقة</li>
+            <li>إذا سأل عن <strong>معنى كلمة</strong> → انظر السياق المحيط بها</li>
+            <li>إذا سأل عن الفكرة الرئيسية → اختر ما يمثّل <strong>كل</strong> الفقرة لا جزء منها</li>
           </ul>
         </article>
 
         <article class="card">
-          <h3>خطة مراجعة يومية (15 دقيقة)</h3>
+          <h3>⚡ القواعد السريعة — Quick Rules</h3>
+          <ul class="quick-list">
+            <li>بعد <strong>will / modal</strong> → V1</li>
+            <li>بعد <strong>did</strong> → V1 (لا تستخدم V2)</li>
+            <li>بعد <strong>am / is / are</strong> → V-ing</li>
+            <li>بعد <strong>have / has</strong> → V3</li>
+            <li>بعد <strong>since / for</strong> → Present Perfect</li>
+            <li><strong>so</strong> ≠ <strong>such</strong> — so + adj فقط / such + adj + noun</li>
+            <li>He/She/It → V1 + <strong>s</strong> في Present Simple</li>
+            <li><strong>wish</strong> → past simple (وليس present)</li>
+            <li>المبني للمجهول: <strong>be + V3</strong></li>
+            <li>الشرط Type1: <strong>if + present, will + V1</strong></li>
+            <li>الشرط Type2: <strong>if + past, would + V1</strong></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>🔤 أخطاء شائعة يجب تجنبها</h3>
           <ul>
-            <li>5 دقائق: مراجعة قاعدة نحوية.</li>
-            <li>5 دقائق: حفظ وظيفتين لغويتين.</li>
-            <li>5 دقائق: تدريب بالصوت العالي.</li>
+            <li>لا تستخدم V2 بعد <strong>did</strong> → ❌ did went / ✅ did go</li>
+            <li>لا تنسَ <strong>-s</strong> مع he/she/it → ❌ She study / ✅ She studies</li>
+            <li>بعد <strong>should / can / will / must</strong> → V1 بدون to</li>
+            <li>لا تخلط بين <strong>so</strong> (نتيجة) و <strong>because</strong> (سبب)</li>
+            <li>لا تخلط بين <strong>since</strong> (بداية) و <strong>for</strong> (مدة)</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>📝 هيكل الإجابة المثالية</h3>
+          <ul>
+            <li>ابدأ بجملة مباشرة وواضحة</li>
+            <li>أضف سبباً أو مثالاً قصيراً</li>
+            <li>اختم بجملة تؤكد فكرتك</li>
           </ul>
           <div class="example">
-            الاتساق يهزم الحفظ المتقطع — 15 دقيقة يوميًا أفضل من ساعتين مرة واحدة.
+            I prefer studying in the morning <strong>because</strong> I can focus better,
+            <strong>so</strong> I finish my tasks faster.
           </div>
         </article>
 
       </div>
-      <p class="footer-note">
-        ملاحظة: إذا أردت نسخة مطابقة 100% لنص ملفات PDF الأصلية، قد يستلزم الأمر قراءة OCR للملفات المصورة.
-      </p>
     </section>
+
   </main>
 
   <footer class="page-footer">
-    Warith National Exam Master — ملخص مراجعة سريع للامتحان الوطني
+    Warith National Exam Master — ورقة المراجعة السريعة للامتحان الوطني
   </footer>
 
   <script>
@@ -314,12 +592,10 @@
         });
       }
 
-      /* نقر الفأرة */
       buttons.forEach(function (btn) {
         btn.addEventListener("click", function () { activateTab(btn) });
       });
 
-      /* تنقل لوحة المفاتيح بالأسهم */
       buttons.forEach(function (btn, i) {
         btn.addEventListener("keydown", function (e) {
           let next = -1;

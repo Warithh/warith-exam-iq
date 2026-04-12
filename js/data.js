@@ -839,7 +839,7 @@ const APP_DATA = {
         "Had been"
       ],
       "answer": 0,
-      "explanation": "مع would في الجملة الرئيسية نراجع قاعدة الشرط: if + past simple في الشرط الثاني.",
+      "explanation": "تعبير 'If I were you' تعبير اصطلاحي يعني 'لو كنتُ مكانك' ويُستخدم لإعطاء النصيحة في الشرط الثاني (Type 2). نستخدم were مع جميع الضمائر وليس was في هذا التعبير.",
       "uid": 50
     },
     {
@@ -855,8 +855,8 @@ const APP_DATA = {
         "The oldest",
         "Old"
       ],
-      "answer": 1,
-      "explanation": "عند المقارنة بين أكثر من اثنين نستخدم superlative مثل the oldest.",
+      "answer": 2,
+      "explanation": "عبارة 'in the family' تدل على المقارنة بين أكثر من شخصين، لذا نستخدم صيغة التفضيل الأعلى (superlative): the oldest. لا نستخدم older (مقارنة بين اثنين فقط).",
       "uid": 51
     },
     {
@@ -872,8 +872,8 @@ const APP_DATA = {
         "played",
         "playing"
       ],
-      "answer": 2,
-      "explanation": "بعد بعض الأفعال أو بعد being/keep/up all night نحتاج verb + ing حسب التركيب.",
+      "answer": 3,
+      "explanation": "تركيب 'were up all night playing' يستخدم الـ gerund (الفعل + ing) بعد up all night. المعنى: ظللنا مستيقظين طوال الليل نلعب ألعاب الفيديو. لا نقول 'played' لأن الفعل المستمر هو المقصود.",
       "uid": 52
     },
     {
@@ -889,8 +889,8 @@ const APP_DATA = {
         "English bad",
         "badly English"
       ],
-      "answer": 2,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "answer": 0,
+      "explanation": "الصفة تأتي قبل الاسم في الإنكليزية: perfect English (صحيح) وليس English perfect. الجملة تقول إن إنكليزية ماريا ممتازة، فهي تتكلم إنكليزية ممتازة.",
       "uid": 53
     },
     {
@@ -907,7 +907,7 @@ const APP_DATA = {
         "He says I might consider the offer"
       ],
       "answer": 1,
-      "explanation": "في indirect speech ننتبه إلى زمن الفعل والضمائر داخل الجملة المنقولة.",
+      "explanation": "لأن فعل القول 'says' مضارع (ليس ماضياً)، يبقى الزمن كما هو في الكلام غير المباشر. may تتحول إلى might. والضمير I يصبح he. الجملة الصحيحة: He says that he might consider the offer.",
       "uid": 54
     },
     {
@@ -924,7 +924,7 @@ const APP_DATA = {
         "writing"
       ],
       "answer": 2,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "وجود yesterday يدل على الماضي البسيط. wrote هي الصيغة الصحيحة للفعل write في الماضي.",
       "uid": 55
     },
     {
@@ -958,7 +958,7 @@ const APP_DATA = {
         "Any"
       ],
       "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "little تُستخدم مع الأشياء غير المعدودة (uncountable nouns). تعبير 'there's little to do' = لا يوجد ما يكفي للقيام به. أما few فتُستخدم مع الأشياء المعدودة فقط.",
       "uid": 57
     },
     {
@@ -975,7 +975,7 @@ const APP_DATA = {
         "to be living"
       ],
       "answer": 1,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "to have lived يدل على فعل اكتمل في الماضي (perfect infinitive). المعنى: أنا سعيد لأنني عشتُ في الهند سابقاً، وهذا يفسر لماذا يفتقدها الآن.",
       "uid": 58
     },
     {
@@ -1009,7 +1009,7 @@ const APP_DATA = {
         "had worked"
       ],
       "answer": 3,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "الجملة الشرطية من النوع الثالث: if + had + past participle. الصيغة الصحيحة: if she had worked harder. would not have failed يدل على النوع الثالث.",
       "uid": 60
     },
     {
@@ -1042,8 +1042,9 @@ const APP_DATA = {
         "would have arrived -would have missed",
         "would arrive -would miss"
       ],
+
       "answer": 1,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "الجملة الشرطية من النوع الثالث: if + had + past participle → would have + past participle. الصيغة الصحيحة: If he had arrived one minute later, he would have missed the train.",
       "uid": 62
     },
     {
@@ -1060,7 +1061,7 @@ const APP_DATA = {
         "will have been organized"
       ],
       "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "every year يدل على حدث متكرر في المضارع. المبني للمجهول في المضارع البسيط: is/am/are + past participle. الفاعل 'competition' مفرد → is organized.",
       "uid": 63
     },
     {
@@ -1077,7 +1078,7 @@ const APP_DATA = {
         "hasn’t"
       ],
       "answer": 2,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "فعل waved في الماضي البسيط، أما looking فتدل على فعل مستمر في الماضي. النفي في الماضي المستمر: wasn't + verb-ing. أي لم تكن تنظر (was not looking).",
       "uid": 64
     },
     {
@@ -1094,7 +1095,7 @@ const APP_DATA = {
         "Some"
       ],
       "answer": 3,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "في جمل الطلب المؤدب (Can I have...?) نستخدم some وليس any. قاعدة: some تُستخدم في العروض والطلبات، بينما any تُستخدم في الجمل الاستفهامية العادية والمنفية.",
       "uid": 65
     },
     {
@@ -1111,7 +1112,7 @@ const APP_DATA = {
         "which"
       ],
       "answer": 2,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "who تُستخدم للإشارة إلى الأشخاص في جمل الوصل (relative clauses). The woman who lives = المرأة التي تسكن. لا نستخدم which للأشخاص.",
       "uid": 66
     },
     {
@@ -1128,7 +1129,7 @@ const APP_DATA = {
         "The house was cleaned by them."
       ],
       "answer": 1,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "المبني للمجهول في المضارع المستمر: is/am/are + being + past participle. They are cleaning (فاعل they) → The house is being cleaned by them.",
       "uid": 67
     },
     {
@@ -1145,7 +1146,7 @@ const APP_DATA = {
         "were"
       ],
       "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "الفاعل 'friends' جمع، والجملة تصف حدثاً يجري الآن (present continuous). نستخدم are + building. They hope to finish it next (week) يدل على أن البناء مستمر.",
       "uid": 68
     },
     {
@@ -1161,8 +1162,8 @@ const APP_DATA = {
         "as in",
         "how"
       ],
-      "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "answer": 1,
+      "explanation": "as though + past perfect تُستخدم للتشبيه مع الافتراض في الماضي: 'looked as though it had been' = بدا وكأنه كان. as though = كأنّ / كما لو. الخيار as (وحده) لا يصح مع جملة فعلية كاملة.",
       "uid": 69
     },
     {
@@ -1179,7 +1180,7 @@ const APP_DATA = {
         "45"
       ],
       "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "هذا السؤال مرتبط بمحادثة من الكتاب المدرسي. Grade 1 في نظام التقدير البريطاني يعادل الدرجة الأولى الممتازة. الإجابة (B) هي المقابل الصحيح وفق مفتاح الكتاب.",
       "uid": 70
     },
     {
@@ -1195,8 +1196,8 @@ const APP_DATA = {
         "Sali was active",
         "Sali was wonded"
       ],
-      "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "answer": 1,
+      "explanation": "وفقاً للنص، لاحظ أهل القرية إخلاص سالي وتفانيها في رعاية الطائر — 'The villagers marveled at Sali's dedication'. الإجابة الصحيحة هي dedicated (مخلصة/متفانية).",
       "uid": 71
     },
     {
@@ -1212,8 +1213,8 @@ const APP_DATA = {
         "Robots are helpful",
         "Robots are dangerous"
       ],
-      "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "answer": 2,
+      "explanation": "وفقاً للنص، الروبوتات مفيدة (helpful) — تساعد في صنع السيارات، واستكشاف الأماكن الخطرة، وتنظيف المنازل. أفضل استخدام للروبوت هو مساعدة الإنسان في المهام الصعبة أو الخطرة.",
       "uid": 72
     },
     {
@@ -1229,8 +1230,8 @@ const APP_DATA = {
         "Make medicines",
         "Build websites"
       ],
-      "answer": 3,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "answer": 1,
+      "explanation": "Unimate كان أول روبوت صناعي حقيقي (صُنع عام 1961)، وقد استخدمته شركة General Motors في خط تجميع السيارات. كان يبدو كذراع عملاقة.",
       "uid": 73
     },
     {
@@ -1247,7 +1248,7 @@ const APP_DATA = {
         "Gold."
       ],
       "answer": 3,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "وفقاً للنص، الشاعر هوميروس تخيّل روبوتات قبل أكثر من ألفي سنة. روبوتاته كانت مصنوعة من الذهب (His robots were made of gold).",
       "uid": 74
     },
     {
@@ -1263,8 +1264,8 @@ const APP_DATA = {
         "scared and helpless",
         "happy"
       ],
-      "answer": 0,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "answer": 2,
+      "explanation": "وفقاً للنص، عندما جلس علي على الرمال كان خائفاً وعاجزاً: 'Ali sat down on the sand, feeling scared and helpless'. الخيار الصحيح هو scared and helpless.",
       "uid": 75
     },
     {
@@ -1281,7 +1282,7 @@ const APP_DATA = {
         "He took Ali to the hospital"
       ],
       "answer": 2,
-      "explanation": "too + adjective تعطي معنى زيادة أكثر من اللازم.",
+      "explanation": "وفقاً للنص، الغريب اقترب من علي بابتسامة مطمئنة وأبلغ الحارس عنه، لكنه لم يُطمئنه (reassure) مباشرةً — السؤال يسأل عمّا لم يفعله الغريب، والإجابة هي reassuring Ali.",
       "uid": 76
     },
     {
@@ -1298,7 +1299,7 @@ const APP_DATA = {
         "Body temperatures"
       ],
       "answer": 2,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "وفقاً للنص، خرائط توقعات الطقس تُظهر درجات الحرارة لوقت معين في منطقة معينة (Temperatures for a particular time in an area). هذه معلومة مذكورة صراحةً في نص قطعة الطقس.",
       "uid": 77
     },
     {
@@ -1315,7 +1316,7 @@ const APP_DATA = {
         "Dependence on outdated prediction tools"
       ],
       "answer": 1,
-      "explanation": "too + adjective تعطي معنى زيادة أكثر من اللازم.",
+      "explanation": "وفقاً للنص، سبب أخطاء علماء الأرصاد في التنبؤ هو أن الطقس قد يتغير بسرعة وبشكل غير متوقع. النص يقول: 'Weather can change quickly, and it is sometimes hard to predict.'",
       "uid": 78
     },
     {
@@ -1332,7 +1333,7 @@ const APP_DATA = {
         "records of different areas."
       ],
       "answer": 2,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "علماء الأرصاد الجوية يأخذون في الحسبان: أنماط الطقس المحلية، وبيانات الأقمار الصناعية، وسجلات المناطق المختلفة. أما توقعات البورصة (stock market) فلا علاقة لها بالطقس إطلاقاً.",
       "uid": 79
     },
     {
@@ -1349,7 +1350,7 @@ const APP_DATA = {
         "Geological formations"
       ],
       "answer": 1,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "وفقاً للنص، خرائط توقعات الطقس تُشير إلى المطر والثلج والرياح المتوقعة في المدن والبلدات في وقت مستقبلي محدد (Future rain, snow, or wind in a town or city).",
       "uid": 80
     },
     {
@@ -1366,7 +1367,7 @@ const APP_DATA = {
         "It decreases the population growth rate."
       ],
       "answer": 1,
-      "explanation": "راجع صياغة السؤال والكلمات المفتاحية واختر الخيار الأنسب نحويًا ومعنويًا.",
+      "explanation": "من أهم فوائد دقة توقعات الطقس تمكين السكان من الاستعداد للطقس السيئ مسبقاً. النص يقول: 'meteorologists help educate people about the weather. They make sure people are as prepared as possible.'",
       "uid": 81
     },
     {
@@ -1382,8 +1383,8 @@ const APP_DATA = {
         "The bird began to heal",
         "The bird got broken leg."
       ],
-      "answer": 0,
-      "explanation": "Parsed from passage pages in booklet.",
+      "answer": 2,
+      "explanation": "وفقاً للنص، بعد أسابيع من الرعاية بدأ الطائر يتعافى تحت إشراف سالي: 'the bird slowly began to heal under Sali's watchful eye'. الإجابة الصحيحة هي 'The bird began to heal'.",
       "uid": 82
     },
     {
@@ -1400,7 +1401,7 @@ const APP_DATA = {
         "Tired"
       ],
       "answer": 0,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "الكلمة special تعني 'خاص/مميز/غير عادي'. الضد المعنوي لكلمة special هو Normal (عادي). النص يقول: 'it is not just any machine. It is a special kind of machine' أي ليست آلة عادية.",
       "uid": 83
     },
     {
@@ -1416,8 +1417,8 @@ const APP_DATA = {
         "Answer telephone calls",
         "All of the above"
       ],
-      "answer": 0,
-      "explanation": "Parsed from passage pages in booklet.",
+      "answer": 3,
+      "explanation": "وفقاً للنص، يمكن استخدام الروبوتات لصنع السيارات واستكشاف البراكين والرد على المكالمات الهاتفية — جميع هذه الاستخدامات مذكورة في الفقرة الثانية. الإجابة: All of the above.",
       "uid": 84
     },
     {
@@ -1434,7 +1435,7 @@ const APP_DATA = {
         "2000 years ago"
       ],
       "answer": 0,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "وفقاً للنص، صُنع أول روبوت حقيقي عام 1961: 'The first real robot was made in 1961. It was called Unimate.' الإجابة الصحيحة هي 1961.",
       "uid": 85
     },
     {
@@ -1451,7 +1452,7 @@ const APP_DATA = {
         "Satellites"
       ],
       "answer": 2,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "الفكرة الرئيسية للنص هي توقعات الطقس (Weather forecasting) — كيف يدرس علماء الأرصاد الجوية الطقس ويتنبأون به باستخدام الأقمار الصناعية والأدوات الحديثة.",
       "uid": 86
     },
     {
@@ -1468,7 +1469,7 @@ const APP_DATA = {
         "To show that tornadoes occur frequently in Canada"
       ],
       "answer": 1,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "ذكر الكاتب إعصار إدمونتون كمثال على عاصفة مدمرة (a damaging storm). يوضح كيف أن بعض العواصف تبدأ بسرعة وتتسبب في أضرار ضخمة.",
       "uid": 87
     },
     {
@@ -1485,7 +1486,7 @@ const APP_DATA = {
         "To give an example of international cooperation"
       ],
       "answer": 1,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "ذكر الكاتب أن الرصد يتم مرة واحدة كل اثنتي عشرة ساعة ليُظهر أن هذه البيانات محدودة وغير كافية للتنبؤ بالعواصف المحلية قصيرة الأمد.",
       "uid": 88
     },
     {
@@ -1502,7 +1503,7 @@ const APP_DATA = {
         "Satellites"
       ],
       "answer": 0,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "النص يذكر أنظمة الرادار والأجهزة الآلية والأقمار الصناعية كتطورات حديثة في التنبؤ بالطقس. أما بالونات الطقس (Weather balloons) فهي من الأساليب القديمة المحدودة وليست تطوراً حديثاً.",
       "uid": 89
     },
     {
@@ -1517,8 +1518,8 @@ const APP_DATA = {
         "place for clothes",
         "type of sport."
       ],
-      "answer": 1,
-      "explanation": "Parsed from passage pages in booklet.",
+      "answer": 2,
+      "explanation": "وفقاً لنص فندق المشاهير، في غرفة Mike Tyson يمكن للزوار ممارسة الملاكمة، وهناك أيضاً حبل قفز (skipping rope). حبل القفز هو نوع من الرياضة (type of sport).",
       "uid": 90
     },
     {
@@ -1533,8 +1534,8 @@ const APP_DATA = {
         "Madonna",
         "Mike Tyson."
       ],
-      "answer": 1,
-      "explanation": "Parsed from passage pages in booklet.",
+      "answer": 0,
+      "explanation": "وفقاً لنص فندق المشاهير، النزيل في غرفة Einstein يأكل حساء الكرنب (cabbage soup) كل صباح — لأن ذلك ما كان يأكله Einstein الحقيقي.",
       "uid": 91
     },
     {
@@ -1549,8 +1550,8 @@ const APP_DATA = {
         "writers",
         "Scientist."
       ],
-      "answer": 2,
-      "explanation": "Parsed from passage pages in booklet.",
+      "answer": 1,
+      "explanation": "Mark Twain و Agatha Christie كلاهما كُتّاب مشهورون (writers). Mark Twain كتب Tom Sawyer وHuckleberry Finn، وAgatha Christie كتبت روايات بوليسية شهيرة.",
       "uid": 92
     },
     {
@@ -1566,7 +1567,7 @@ const APP_DATA = {
         "London."
       ],
       "answer": 2,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "وفقاً للنص، الشركة تخطط لافتتاح فندق مشاهير آخر في نيويورك، وهناك خطط للتوسع في أوروبا. الكاتب يتطلع للإقامة في جناح Winston Churchill في لندن (London).",
       "uid": 93
     },
     {
@@ -1583,7 +1584,7 @@ const APP_DATA = {
         "Environmental conservation and sustainability efforts"
       ],
       "answer": 1,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "وفقاً لنص المهاجرين، يستمر المهاجرون وعائلاتهم في الإسهام في الثقافة والأعمال التجارية والتكنولوجيا والحياة الأمريكية عموماً.",
       "uid": 94
     },
     {
@@ -1600,7 +1601,7 @@ const APP_DATA = {
         "The laws became even more unfair"
       ],
       "answer": 1,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "بعد وفاة كينيدي، ألغى الكونغرس القانون الذي كان يمنع أشخاصاً من دول بعينها من الهجرة إلى الولايات المتحدة. هذا مذكور صراحةً في النص.",
       "uid": 95
     },
     {
@@ -1617,7 +1618,7 @@ const APP_DATA = {
         "He thought they were unnecessary"
       ],
       "answer": 2,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "وفقاً للنص، كان الرئيس كينيدي يعتقد أن قوانين الهجرة في عهده ظالمة وغير عادلة (unfair): 'President Kennedy thought these laws were unfair.'",
       "uid": 96
     },
     {
@@ -1634,7 +1635,7 @@ const APP_DATA = {
         "Only buildings"
       ],
       "answer": 2,
-      "explanation": "Parsed from passage pages in booklet.",
+      "explanation": "وفقاً للنص، ساعد بعض المهاجرين في بناء السكك الحديدية والمباني والمترو والمصانع: 'Some of them helped build railroads, buildings, subways, and factories.'",
       "uid": 97
     },
     {
@@ -1650,8 +1651,8 @@ const APP_DATA = {
         "Deloittion",
         "Infection"
       ],
-      "answer": 3,
-      "explanation": "Parsed from passage pages in booklet.",
+      "answer": 0,
+      "explanation": "مرادف كلمة absorption (امتصاص) هو Suction (شفط/امتصاص). كلمة Infection (عدوى) لا تُعدّ مرادفاً لها. النص يتحدث عن منع امتصاص الدهون في علاج السمنة.",
       "uid": 98
     },
     {
@@ -1668,7 +1669,7 @@ const APP_DATA = {
         "One"
       ],
       "answer": 2,
-      "explanation": "Booklet key: 1.C",
+      "explanation": "وفقاً للنص، ثلاثة أشخاص فقط كانوا يعرفون سر الشبح: الأب وجو وبيرت. بعد وفاة الأب، ظل الأخوان يحفظان السر. الإجابة Three.",
       "uid": 99
     },
     {
@@ -1685,7 +1686,7 @@ const APP_DATA = {
         "Hard work"
       ],
       "answer": 0,
-      "explanation": "Booklet key: 2.A",
+      "explanation": "العمال كانوا يتركون عملهم لأنهم يستيقظون ليجدوا أن العمل قد أُنجز خلال الليل بشكل غامز. النص يقول: 'they always woke up to find the work had been done overnight.'",
       "uid": 100
     },
     {
@@ -1702,7 +1703,7 @@ const APP_DATA = {
         "Engineers"
       ],
       "answer": 2,
-      "explanation": "Booklet key: 3.C",
+      "explanation": "أصبح من المقبول لدى الجميع أن الأخوين Cox يستخدمون شبحاً مجتهداً يؤدي معظم العمل عنهم: 'a conscientious ghost that did most of their work for them.'",
       "uid": 101
     },
     {
@@ -1719,7 +1720,7 @@ const APP_DATA = {
         "Joe and Bert"
       ],
       "answer": 1,
-      "explanation": "Booklet key: 4.B",
+      "explanation": "الشبح كان إريك كوكس (Eric Cox)، الابن الأكبر الذي كان يُعتقد أنه مات في الحرب. كان يعمل ليلاً وينام نهاراً دون أن يعلم أنه أصبح شبح ضيعة إندلي.",
       "uid": 102
     },
     {
@@ -1736,7 +1737,7 @@ const APP_DATA = {
         "Satellites"
       ],
       "answer": 2,
-      "explanation": "Booklet key: 1.C",
+      "explanation": "الموضوع الرئيسي للنص هو توقعات الطقس (Weather forecasting): كيف يتنبأ علماء الأرصاد الجوية بالطقس باستخدام الأقمار الصناعية والأدوات الحديثة.",
       "uid": 103
     },
     {
@@ -1753,7 +1754,7 @@ const APP_DATA = {
         "Show frequency in Canada"
       ],
       "answer": 1,
-      "explanation": "Booklet key: 2.B",
+      "explanation": "ذكر الكاتب إعصار إدمونتون (Edmonton tornado) لإعطاء مثال حقيقي على عاصفة مدمرة تسببت في أضرار تجاوزت 250 مليون دولار.",
       "uid": 104
     },
     {
@@ -1770,7 +1771,7 @@ const APP_DATA = {
         "International cooperation"
       ],
       "answer": 1,
-      "explanation": "Booklet key: 3.B",
+      "explanation": "ذكر الكاتب أن الرصد يتم مرة كل اثنتي عشرة ساعة فقط ليُبيّن أن البيانات المتاحة غير كافية للتنبؤ بالعواصف المحلية القصيرة الأمد — أي أن هذه الملاحظات ذات قيمة محدودة.",
       "uid": 105
     },
     {
@@ -1786,7 +1787,7 @@ const APP_DATA = {
         "Provide good future for children"
       ],
       "answer": 2,
-      "explanation": "Booklet key: 1.C",
+      "explanation": "وفقاً للنص، كانت فاطمة تعمل في عدة وظائف لتوفير مستقبل أفضل لأطفالها: 'Fatima worked tirelessly, juggling multiple jobs to make ends meet.' هدفها هو توفير مستقبل جيد لزكي وهالة.",
       "uid": 106
     },
     {
@@ -1802,7 +1803,7 @@ const APP_DATA = {
         "Too expensive"
       ],
       "answer": 0,
-      "explanation": "Booklet key: 2.A",
+      "explanation": "وفقاً للنص، كانت فاطمة تؤمن أن التعليم هو مفتاح النجاح: 'She knew education was the key to success.' لذا حرصت على تعليم أطفالها أفضل تعليم ممكن.",
       "uid": 107
     },
     {
@@ -1819,7 +1820,7 @@ const APP_DATA = {
         "Infection"
       ],
       "answer": 0,
-      "explanation": "Booklet key: 1.A",
+      "explanation": "مرادف كلمة absorption (امتصاص) هو Suction (شفط). النص يتحدث عن دواء يُعيق امتصاص الدهون (inhabit fat absorption) في علاج السمنة.",
       "uid": 108
     },
     {
@@ -1836,7 +1837,7 @@ const APP_DATA = {
         "Serious"
       ],
       "answer": 3,
-      "explanation": "Booklet key: 2.D",
+      "explanation": "السمنة (Obesity) هي حالة طبية خطيرة (serious disease) تنجم عن تراكم الدهون الزائدة وتؤثر على الصحة وتزيد من خطر الإصابة بأمراض القلب والسكري.",
       "uid": 109
     },
     {
@@ -1852,7 +1853,7 @@ const APP_DATA = {
         "Wasn't he?"
       ],
       "answer": 1,
-      "explanation": "Tag rule",
+      "explanation": "قاعدة ذيل السؤال (question tag): الجملة المثبتة تأخذ ذيلاً منفياً. He is → isn't he? الترتيب الصحيح هو: فعل مساعد منفي + ضمير (isn't he?) وليس 'Is not he?'.",
       "uid": 110
     },
     {
@@ -1868,7 +1869,7 @@ const APP_DATA = {
         "Don't you?"
       ],
       "answer": 2,
-      "explanation": "Tag rule",
+      "explanation": "قاعدة ذيل السؤال: الجملة المثبتة (You do go) تأخذ ذيلاً منفياً. نستخدم الفعل المساعد do مع المضارع البسيط: don't you? وليس Do you? أو Aren't you?",
       "uid": 111
     },
     {
@@ -1884,7 +1885,7 @@ const APP_DATA = {
         "Are we?"
       ],
       "answer": 1,
-      "explanation": "Tag rule",
+      "explanation": "قاعدة ذيل السؤال: الجملة المنفية (We won't) تأخذ ذيلاً مثبتاً. نستخدم: will we? (مثبت) لأن الجملة الرئيسية منفية بـ won't.",
       "uid": 112
     },
     {
@@ -1901,7 +1902,7 @@ const APP_DATA = {
         "To"
       ],
       "answer": 1,
-      "explanation": "in + year",
+      "explanation": "نستخدم حرف الجر in مع السنوات والشهور والفصول: born in 1993، in January، in summer. أما on فمع أيام الأسبوع والتواريخ المحددة، وat مع الوقت.",
       "uid": 113
     },
     {
@@ -1918,7 +1919,7 @@ const APP_DATA = {
         "will work"
       ],
       "answer": 2,
-      "explanation": "used to",
+      "explanation": "used to + base verb يُستخدم للتعبير عن عادة أو حالة في الماضي انتهت ولم تعد مستمرة. Dave used to work = كان يعمل في السابق (لكنه لم يعد يعمل هناك).",
       "uid": 114
     },
 
@@ -2527,7 +2528,7 @@ const APP_DATA = {
             "around 20,000 km",
             "10,000 km"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "original-marshes-area-remained-107"
         },
         {
@@ -2538,7 +2539,7 @@ const APP_DATA = {
             "in 2003",
             "in 2000"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "original-marshes-area-remained-107"
         },
         {
@@ -2549,7 +2550,7 @@ const APP_DATA = {
             "They send scientist to discover the place",
             "They put a plan to save and recover the marshes."
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "original-marshes-area-remained-107"
         },
         {
@@ -2560,7 +2561,7 @@ const APP_DATA = {
             "in a cement houses",
             "in a wooden cottages."
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "original-marshes-area-remained-107"
         },
         {
@@ -2571,7 +2572,7 @@ const APP_DATA = {
             "In north of Iraq.",
             "in the middle of Baghdad."
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "original-marshes-area-remained-107"
         }
       ]
@@ -2595,7 +2596,7 @@ const APP_DATA = {
             "construction of Taj Mahal finished",
             "The main material is white marble"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "pools-fountains-and-green-gardens-110"
         },
         {
@@ -2606,7 +2607,7 @@ const APP_DATA = {
             "They destroyed it with Shuffles",
             "They took some precious stones"
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "pools-fountains-and-green-gardens-110"
         },
         {
@@ -2617,7 +2618,7 @@ const APP_DATA = {
             "less than 1,000",
             "2,000"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "pools-fountains-and-green-gardens-110"
         },
         {
@@ -2628,7 +2629,7 @@ const APP_DATA = {
             "In the river",
             "Next to a river Dijla"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "pools-fountains-and-green-gardens-110"
         }
       ]
@@ -2648,7 +2649,7 @@ const APP_DATA = {
             "Greed",
             "Selfisness"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "passage-p113-113"
         },
         {
@@ -2659,7 +2660,7 @@ const APP_DATA = {
             "rude",
             "brave."
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "passage-p113-113"
         },
         {
@@ -2670,7 +2671,7 @@ const APP_DATA = {
             "lying on ground",
             "shivering"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "passage-p113-113"
         },
         {
@@ -2681,7 +2682,7 @@ const APP_DATA = {
             "Giving food",
             "keeping in cage."
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "passage-p113-113"
         },
         {
@@ -2692,7 +2693,7 @@ const APP_DATA = {
             "The bird began to heal",
             "The bird got broken leg."
           ],
-          "answer": 0,
+          "answer": 2,
           "topic": "passage-p113-113"
         }
       ]
@@ -2723,7 +2724,7 @@ const APP_DATA = {
             "Answer telephone calls",
             "All of the above"
           ],
-          "answer": 0,
+          "answer": 3,
           "topic": "unless-you-tell-it-to-116"
         },
         {
@@ -2734,7 +2735,7 @@ const APP_DATA = {
             "To describe the things a robot can do",
             "To explain the difference between a robot and a machine"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "unless-you-tell-it-to-116"
         },
         {
@@ -2756,7 +2757,7 @@ const APP_DATA = {
             "To help read a book",
             "To help explore Mars"
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "unless-you-tell-it-to-116"
         }
       ]
@@ -2776,7 +2777,7 @@ const APP_DATA = {
             "They went back home",
             "They searched and called out his name"
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "scared-and-helpless-119"
         },
         {
@@ -2787,7 +2788,7 @@ const APP_DATA = {
             "streets",
             "bridges"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "scared-and-helpless-119"
         },
         {
@@ -2798,7 +2799,7 @@ const APP_DATA = {
             "He broke his arm",
             "He was playing football"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "scared-and-helpless-119"
         },
         {
@@ -2809,7 +2810,7 @@ const APP_DATA = {
             "scared and helpless",
             "happy"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "scared-and-helpless-119"
         },
         {
@@ -2820,7 +2821,7 @@ const APP_DATA = {
             "reassuring Ali",
             "He took Ali to the hospital"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "scared-and-helpless-119"
         }
       ]
@@ -2840,7 +2841,7 @@ const APP_DATA = {
             "Three",
             "One"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "the-ghost-122"
         },
         {
@@ -2851,7 +2852,7 @@ const APP_DATA = {
             "They clean the hay",
             "They find it hard work"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "the-ghost-122"
         },
         {
@@ -2862,7 +2863,7 @@ const APP_DATA = {
             "Conscientious ghost",
             "Engineers"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "the-ghost-122"
         },
         {
@@ -2873,7 +2874,7 @@ const APP_DATA = {
             "The father",
             "Joe and Bert the two brothers"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "the-ghost-122"
         },
         {
@@ -2884,7 +2885,7 @@ const APP_DATA = {
             "Hand workers",
             "A young man"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "the-ghost-122"
         }
       ]
@@ -2968,7 +2969,7 @@ const APP_DATA = {
             "She plans to buy a house",
             "She wants to provide a good future for her children"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "fatima-127"
         },
         {
@@ -2978,7 +2979,7 @@ const APP_DATA = {
             "Stressful work",
             "Too expensive"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "fatima-127"
         },
         {
@@ -2988,7 +2989,7 @@ const APP_DATA = {
             "Medicine",
             "Engineering"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "fatima-127"
         },
         {
@@ -2998,7 +2999,7 @@ const APP_DATA = {
             "From noon",
             "In the evening"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "fatima-127"
         },
         {
@@ -3008,7 +3009,7 @@ const APP_DATA = {
             "Continuous",
             "Sleep"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "fatima-127"
         },
         {
@@ -3018,7 +3019,7 @@ const APP_DATA = {
             "Cooking",
             "Dismantle devices"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "fatima-127"
         }
       ]
@@ -3038,7 +3039,7 @@ const APP_DATA = {
             "The largest type of weasel",
             "A type of bird"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "wolverines-are-very-strong-130"
         },
         {
@@ -3049,7 +3050,7 @@ const APP_DATA = {
             "In the mountains",
             "In grasslands"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "wolverines-are-very-strong-130"
         },
         {
@@ -3060,7 +3061,7 @@ const APP_DATA = {
             "The size of a small cat",
             "The size of a horse"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "wolverines-are-very-strong-130"
         },
         {
@@ -3071,7 +3072,7 @@ const APP_DATA = {
             "Almost anything, from berries to animals",
             "Only animals they kill"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "wolverines-are-very-strong-130"
         },
         {
@@ -3082,7 +3083,7 @@ const APP_DATA = {
             "Because there are few of them and they hide well",
             "Because they don't move much"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "wolverines-are-very-strong-130"
         }
       ]
@@ -3100,7 +3101,7 @@ const APP_DATA = {
             "it casuses the economy to boom",
             "it reduces the value of currency"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "innovations-demographic-changes-and-global-trade-133"
         },
         {
@@ -3110,7 +3111,7 @@ const APP_DATA = {
             "it is the money spent on consumption",
             "it is the system that organizes production and distribution in society"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "innovations-demographic-changes-and-global-trade-133"
         },
         {
@@ -3120,7 +3121,7 @@ const APP_DATA = {
             "high inflation",
             "bad investments"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "innovations-demographic-changes-and-global-trade-133"
         },
         {
@@ -3130,7 +3131,7 @@ const APP_DATA = {
             "history",
             "microeconomics"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "innovations-demographic-changes-and-global-trade-133"
         },
         {
@@ -3140,7 +3141,7 @@ const APP_DATA = {
             "technological innovation",
             "demographic change"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "innovations-demographic-changes-and-global-trade-133"
         },
         {
@@ -3151,7 +3152,7 @@ const APP_DATA = {
             "climate change",
             "all of the above"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "innovations-demographic-changes-and-global-trade-133"
         }
       ]
@@ -3171,7 +3172,7 @@ const APP_DATA = {
             "Califorina",
             "Los Angelos"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "fame-hotel-136"
         },
         {
@@ -3181,7 +3182,7 @@ const APP_DATA = {
             "you choose a room",
             "you have some coffee"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "fame-hotel-136"
         },
         {
@@ -3192,7 +3193,7 @@ const APP_DATA = {
             "40",
             "10 miles"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "fame-hotel-136"
         },
         {
@@ -3202,7 +3203,7 @@ const APP_DATA = {
             "on the third floor",
             "on the balcony"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "fame-hotel-136"
         },
         {
@@ -3212,7 +3213,7 @@ const APP_DATA = {
             "famous writer",
             "Sport star"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "fame-hotel-136"
         },
         {
@@ -3222,7 +3223,7 @@ const APP_DATA = {
             "because they were expensive that time",
             "because they’re stolen from his room."
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "fame-hotel-136"
         }
       ]
@@ -3242,7 +3243,7 @@ const APP_DATA = {
             "over 200",
             "over 120"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "dog-breed-139"
         },
         {
@@ -3253,7 +3254,7 @@ const APP_DATA = {
             "A breed is a kind of cat.",
             "A breed is a color."
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "dog-breed-139"
         },
         {
@@ -3264,7 +3265,7 @@ const APP_DATA = {
             "Different dog breeds are different sizes",
             "Dogs are aggressive"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "dog-breed-139"
         },
         {
@@ -3276,7 +3277,7 @@ const APP_DATA = {
             "A breed is like a family of dogs, and a puppy that’s a Labrador Retriever has two parents",
             "Dogs are good pets"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "dog-breed-139"
         }
       ]
@@ -3294,7 +3295,7 @@ const APP_DATA = {
             "it casuses the economy to boom",
             "it reduces the value of currency"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3304,7 +3305,7 @@ const APP_DATA = {
             "it is the money spent on consumption",
             "it is the system that organizes production and distribution in society"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3314,7 +3315,7 @@ const APP_DATA = {
             "high inflation",
             "bad investments"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3324,7 +3325,7 @@ const APP_DATA = {
             "history",
             "microeconomics"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3334,7 +3335,7 @@ const APP_DATA = {
             "technological innovation",
             "demographic change"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3344,7 +3345,7 @@ const APP_DATA = {
             "technological innovation",
             "climate change"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3355,7 +3356,7 @@ const APP_DATA = {
             "Meteorologists",
             "Astronomers"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3366,7 +3367,7 @@ const APP_DATA = {
             "They rely solely on historical weather data.",
             "They use animal behaviors as indicators of upcoming weather."
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3377,7 +3378,7 @@ const APP_DATA = {
             "Political trends",
             "Cultural practices."
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3388,7 +3389,7 @@ const APP_DATA = {
             "To warn people about upcoming hurricanes or heat waves",
             "To analyze the impact of climate change over decades"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "of-large-storm-in-an-area-143"
         },
         {
@@ -3399,7 +3400,7 @@ const APP_DATA = {
             "Historical artifacts",
             "Mathematical equations"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "of-large-storm-in-an-area-143"
         }
       ]
@@ -3419,7 +3420,7 @@ const APP_DATA = {
             "John Kennedy",
             "Thomas Jefferson"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "immigrants-to-america-146"
         },
         {
@@ -3430,7 +3431,7 @@ const APP_DATA = {
             "By showcasing immigrants' contributions to various industries",
             "By arguing that immigrants were responsible for social unrest"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "immigrants-to-america-146"
         },
         {
@@ -3442,7 +3443,7 @@ const APP_DATA = {
             "Asians and Africans",
             "Europeans and South Americans"
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "immigrants-to-america-146"
         },
         {
@@ -3453,7 +3454,7 @@ const APP_DATA = {
             "40th",
             "45th"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "immigrants-to-america-146"
         },
         {
@@ -3464,7 +3465,7 @@ const APP_DATA = {
             "Contributions in various fields such as invention, art, farming, and science",
             "Contributions in politics only"
           ],
-          "answer": null,
+          "answer": 2,
           "topic": "immigrants-to-america-146"
         },
         {
@@ -3475,7 +3476,7 @@ const APP_DATA = {
             "The U.S. should focus on attracting immigrants from specific regions",
             "The U.S. should limit immigration to maintain cultural integrity"
           ],
-          "answer": null,
+          "answer": 1,
           "topic": "immigrants-to-america-146"
         }
       ]
@@ -3588,7 +3589,7 @@ const APP_DATA = {
             "Deloittion",
             "Infection"
           ],
-          "answer": 3,
+          "answer": 0,
           "topic": "obesity-149"
         },
         {
@@ -3599,7 +3600,7 @@ const APP_DATA = {
             "Silly",
             "A serious"
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "obesity-149"
         },
         {
@@ -3610,7 +3611,7 @@ const APP_DATA = {
             "Clolthes",
             "none of above"
           ],
-          "answer": null,
+          "answer": 0,
           "topic": "obesity-149"
         },
         {
@@ -3621,7 +3622,7 @@ const APP_DATA = {
             "some medicines",
             "physical exercise"
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "obesity-149"
         },
         {
@@ -3632,7 +3633,7 @@ const APP_DATA = {
             "Heart",
             "all of them"
           ],
-          "answer": null,
+          "answer": 3,
           "topic": "obesity-149"
         }
       ]

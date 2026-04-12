@@ -17,8 +17,8 @@
 
   /* ── بيانات ────────────────────────────────── */
   const QS = APP_DATA.questions;
-  const PASSAGES = (typeof PASSAGES_FULL !== "undefined" ? PASSAGES_FULL : [])
-    .concat(APP_DATA.passages || []);
+  /* نستخدم PASSAGES_FULL فقط — قطع data.js مكررة وعناوينها غير صحيحة */
+  const PASSAGES = typeof PASSAGES_FULL !== "undefined" ? PASSAGES_FULL : (APP_DATA.passages || []);
 
   const SEC = {
     all:          "شامل (Grammar + Functions + Conversations)",
@@ -270,9 +270,31 @@
     const p = PASSAGES[idx];
     if (!p) return;
 
-    $("#passageTitle").textContent   = p.title  || "القطعة";
-    $("#passageSource").textContent  = p.source || "-";
-    $("#passageBody").textContent    = p.text   || "";
+    /* ترجمة القطعة إن وُجدت */
+    const arText = (typeof PASSAGE_TRANSLATIONS !== "undefined" && PASSAGE_TRANSLATIONS[p.id])
+      ? PASSAGE_TRANSLATIONS[p.id] : "";
+
+    $("#passageTitle").textContent  = p.title  || "القطعة";
+    $("#passageSource").textContent = p.source || "-";
+
+    /* القطعة مع زر التبديل للترجمة */
+    const passageBody = $("#passageBody");
+    passageBody.innerHTML =
+      `<div class="passage-en-text">${esc(p.text || "")}</div>` +
+      (arText
+        ? `<div class="passage-tr-bar">
+             <button class="btn-tr-toggle" id="pTrToggleBtn">🌐 إظهار الترجمة العربية</button>
+           </div>
+           <div class="passage-ar-text hidden" id="pArBlock" lang="ar" dir="rtl">${esc(arText)}</div>`
+        : "");
+
+    if (arText) {
+      document.getElementById("pTrToggleBtn").addEventListener("click", function () {
+        const arBlock = document.getElementById("pArBlock");
+        const isHidden = arBlock.classList.toggle("hidden");
+        this.textContent = isHidden ? "🌐 إظهار الترجمة العربية" : "🌐 إخفاء الترجمة";
+      });
+    }
 
     const qbox = $("#passageQList");
 
@@ -281,11 +303,15 @@
       return;
     }
 
-    /* رسم الأسئلة بدون إجابات */
+    /* رسم الأسئلة مع مرجع القطعة المصغّر */
     qbox.innerHTML = p.questions.map(function (q, i) {
       return `
         <article class="qcard" id="pq_card_${idx}_${i}">
-          <p class="qtitle">${i + 1}. ${esc(q.question)}</p>
+          <div class="meta">
+            <span class="badge num">${i + 1}</span>
+            <span class="badge grey passage-ref-badge">📄 ${esc(p.title || "القطعة")}</span>
+          </div>
+          <p class="qtitle">${esc(q.question)}</p>
           <div class="options">
             ${(q.options || []).map(function (o, j) {
               return `<label class="option">
@@ -295,6 +321,9 @@
             }).join("")}
           </div>
           <div class="answer-box"></div>
+          ${q.explanation
+            ? `<div class="passage-q-exp">${esc(q.explanation)}</div>`
+            : ""}
         </article>`;
     }).join("") + `
       <div style="text-align:center;margin-top:14px">
@@ -341,17 +370,21 @@
 
   let reviewActiveSec = "all";
 
+  /* أسئلة المراجعة — بدون قطعة القراءة */
+  const REVIEW_QS = QS.filter(function (q) { return q.section !== "reading"; });
+
   function buildReviewStats() {
-    const counts = { all: QS.length };
-    QS.forEach(function (q) {
+    const counts = { all: REVIEW_QS.length };
+    REVIEW_QS.forEach(function (q) {
       counts[q.section] = (counts[q.section] || 0) + 1;
     });
     const labels = { all: "الكل", grammar: "Grammar", function: "Functions", conversation: "Conversations" };
     const statsEl = $("#reviewStats");
     if (!statsEl) return;
     statsEl.innerHTML = Object.entries(counts).map(function ([sec, n]) {
+      if (!labels[sec]) return "";
       return `<span class="stat-pill ${sec}">
-        <span>${labels[sec] || sec}</span>
+        <span>${labels[sec]}</span>
         <strong>${n}</strong>
       </span>`;
     }).join("");
@@ -361,7 +394,7 @@
     const sec  = reviewActiveSec;
     const term = ($("#reviewSearch").value || "").trim().toLowerCase();
 
-    const list = QS.filter(function (q) {
+    const list = REVIEW_QS.filter(function (q) {
       const okSec  = sec === "all" || q.section === sec;
       const blob   = (q.question + " " + (q.prompt||"") + " " + (q.topic||"")).toLowerCase();
       const okTerm = !term || blob.includes(term);
