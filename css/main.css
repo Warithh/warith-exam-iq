@@ -367,11 +367,13 @@ button, input, select { font: inherit }
 }
 
 /* القطعة ثابتة عند التمرير */
-.passage-grid > div:first-child .panel {
+.passage-grid > div:first-child {
   position: sticky;
-  top: 68px;
-  max-height: calc(100vh - 88px);
+  top: 58px;
+  max-height: calc(100vh - 70px);
   overflow-y: auto;
+  align-self: start;
+  scrollbar-width: thin;
 }
 
 .passage-text {

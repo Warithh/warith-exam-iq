@@ -277,24 +277,13 @@
     $("#passageTitle").textContent  = p.title  || "القطعة";
     $("#passageSource").textContent = p.source || "-";
 
-    /* القطعة مع زر التبديل للترجمة */
+    /* القطعة مع الترجمة العربية مباشرة */
     const passageBody = $("#passageBody");
     passageBody.innerHTML =
       `<div class="passage-en-text">${esc(p.text || "")}</div>` +
       (arText
-        ? `<div class="passage-tr-bar">
-             <button class="btn-tr-toggle" id="pTrToggleBtn">🌐 إظهار الترجمة العربية</button>
-           </div>
-           <div class="passage-ar-text hidden" id="pArBlock" lang="ar" dir="rtl">${esc(arText)}</div>`
+        ? `<div class="passage-ar-text" lang="ar" dir="rtl">${esc(arText)}</div>`
         : "");
-
-    if (arText) {
-      document.getElementById("pTrToggleBtn").addEventListener("click", function () {
-        const arBlock = document.getElementById("pArBlock");
-        const isHidden = arBlock.classList.toggle("hidden");
-        this.textContent = isHidden ? "🌐 إظهار الترجمة العربية" : "🌐 إخفاء الترجمة";
-      });
-    }
 
     const qbox = $("#passageQList");
 
