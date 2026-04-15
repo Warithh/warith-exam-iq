@@ -495,7 +495,7 @@ const PASSAGES_FULL = [
           "To help make a sandwich",
           "To help tie shoes",
           "To help read a book",
-          "To help explore Mars A- Robots are old B- Robots are confusing C- Robots are helpful D- Robots are dangerous"
+          "To help explore Mars"
         ],
         "answer": 3,
         "source": "booklet-passage-pages",
@@ -1010,7 +1010,7 @@ const PASSAGES_FULL = [
         "options": [
           "Arts",
           "Cooking",
-          "Dismantle devices :/uni0644/uniFEEE/uniFEE0/uniFEA4/uniFEDF/uni0627 1. C/ 2.A/ 3.B /4.A/ 5.B /6.C/ 7.C/8.B"
+          "Dismantle devices"
         ],
         "answer": 2,
         "source": "booklet-passage-pages",
@@ -1610,14 +1610,14 @@ const PASSAGES_FULL = [
       {
         "id": "dog-breed-4-4",
         "qno": 4,
-        "question": "What is the main idea of the text?",
+        "question": "What is the main idea of the passage?",
         "options": [
-          "Chihuahuas are the world’s smallest dogs",
-          "There are many different breeds of dogs that come in different sizes, and there are some",
-          "ogs that are a mix breeds.",
-          "A breed is like a family of dogs, and a puppy that’s a Labrador Retriever has two parents that are also Labrador Retriever. D Dogs are good pets"
+          "Chihuahuas are the world's smallest dogs",
+          "Dogs make wonderful pets and come in many different breeds",
+          "Mixed breed dogs are not good pets",
+          "All dogs in a breed have the same parents"
         ],
-        "answer": null,
+        "answer": 1,
         "source": "booklet-passage-pages",
         "section": "reading",
         "topic": "dog-breed"
